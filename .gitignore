@@ -1,0 +1,11 @@
+# User-specific stuff:
+
+*~
+
+# IntelliJ
+/out/
+/.idea/
+
+# Gradle.gitignore
+.gradle
+/build/
