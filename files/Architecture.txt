@@ -1,0 +1,54 @@
+
+Fonctionnalités -> tâches
+---------------
+
+1. Calcul du score basé sur le temps de parcours
+2. Initialisation du jeu par fichier de configuration du plan d'eau et de parcours (prédéfini)
+3. Vitesse et direction du vent d'après les conditions météorologiques réelles
+4. Changer de cap
+5. Pénalités dues au temps de virement
+6. Choisir la taille (surface) des voiles : grande ou moyenne
+7. Choisir la taille de l'équipe : 2 ou 4
+8. Influence des voiles et de l'équipe sur le temps de virement et la vitesse
+9. Tableau de bord : cap, vitesse de déplacement, force et direction du vent
+10. Sauvegarde d'une partie pour un bateau seul
+11. Rejouer automatiquement une partie
+12. Neutralité du bateau : point de contact avec boué ou trait de côte. 
+13. Inclusion de bateau NPC (Non-Player Character)
+14. Mise en place du respect des règles de priorité
+15. Gestion des conséquences du déventage d’un bateau par autre placé devant lui face au vent
+16. GUI : déplacer le bateau (contrôleur)
+17. GUI : concevoir le GUI
+
+MVP 1
+-------
+
+1. Calcul du score basé sur le temps de parcours
+2. Initialisation du jeu par fichier de configuration du plan d'eau et de parcours (prédéfini)
+6. Choisir la taille (surface) des voiles : grande ou moyenne
+7. Choisir la taille de l'équipe : 2 ou 4
+16. GUI : déplacer le bateau en ligne droite (contrôleur)
+17. GUI : concevoir le GUI
+
+MVP 2
+-------
+
+16. GUI : déplacer le bateau dynamiquement (contrôleur)
+9. Tableau de bord : cap, vitesse de déplacement, force et direction du vent
+10. Sauvegarde d'une partie pour un bateau seul
+11. Rejouer automatiquement une partie
+12. Neutralité du bateau : point de contact avec boué ou trait de côte. 
+4. Changer de cap
+8. Influence des voiles et de l'équipe sur le temps de virement et la vitesse
+
+MVP 3 (ne seront pas implémentées)
+_____
+
+3. Vitesse et direction du vent d'après les conditions météorologiques réelles
+13. Inclusion de bateau NPC (Non-Player Character)
+14. Mise en place du respect des règles de priorité
+15. Gestion des conséquences du déventage d’un bateau par autre placé devant lui face au vent
+5. Pénalités dues au temps de virement
+
+
+
