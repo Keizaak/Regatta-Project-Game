@@ -1,3 +1,7 @@
 .water {
     -fx-background-image: url('sand.jpg');
 }
+
+.menu {
+	-fx-background-color: #DEB887;
+}
