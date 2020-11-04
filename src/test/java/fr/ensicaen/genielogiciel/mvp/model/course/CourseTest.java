@@ -11,7 +11,7 @@ public class CourseTest {
         Course course = new Course();
 
         try {
-            course.load_weather("49.283", "-0.25");
+            course.load_weather_info("49.283", "-0.25");
         } catch (IOException e) {
             e.printStackTrace();
         }
