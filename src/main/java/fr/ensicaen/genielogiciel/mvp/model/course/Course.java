@@ -1,16 +1,16 @@
 package fr.ensicaen.genielogiciel.mvp.model.course;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.io.IOException;
 
 public class Course {
-    private int wind_speed;
-    private char wind_direction;
+    private float _wind_speed;
+    private String _wind_direction;
 
     public void load_weather() throws IOException {
         BufferedReader in;
@@ -39,8 +39,10 @@ public class Course {
             while ((inputLine = in.readLine()) != null) {
                 content.append(inputLine);
             }
-
-            System.out.println(content);
+            JSONObject jObject  = new JSONObject(content.toString());
+            JSONObject data = jObject.getJSONObject("current_condition");
+            _wind_speed = data.getFloat("wnd_spd");
+            _wind_direction = data.getString("wnd_dir");
             in.close();
         }
 
