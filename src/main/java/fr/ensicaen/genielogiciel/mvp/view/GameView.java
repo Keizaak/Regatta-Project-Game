@@ -1,5 +1,6 @@
 package fr.ensicaen.genielogiciel.mvp.view;
 
+import fr.ensicaen.genielogiciel.mvp.LoginMain;
 import fr.ensicaen.genielogiciel.mvp.presenter.GamePresenter;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,8 +16,7 @@ public final class GameView {
     private Stage _stage;
 
     public static GameView createView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(GameView.class.getResource("SpotMap.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("SpotMap.fxml"), LoginMain.getMessageBundle());
         Parent root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
