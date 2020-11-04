@@ -12,15 +12,12 @@ public class Course {
     private float _wind_speed;
     private String _wind_direction;
 
-    public void load_weather() throws IOException {
+    public void load_weather(String latitude, String longitude) throws IOException {
         BufferedReader in;
         String inputLine;
         StringBuffer content;
         int status;
-        String latitude = "49.283";
-        String longitude = "-0.25";
         String urlPath = "https://www.prevision-meteo.ch/services/json/lat=" + latitude + "lng=" + longitude;
-
 
         URL url = new URL(urlPath);
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -45,7 +42,6 @@ public class Course {
             _wind_direction = data.getString("wnd_dir");
             in.close();
         }
-
         con.disconnect();
     }
 }

@@ -4,8 +4,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.*;
-
 public class CourseTest {
 
     @Test
@@ -13,7 +11,7 @@ public class CourseTest {
         Course course = new Course();
 
         try {
-            course.load_weather();
+            course.load_weather("49.283", "-0.25");
         } catch (IOException e) {
             e.printStackTrace();
         }
