@@ -9,17 +9,16 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="water" stylesheets="@SpotMap.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensicaen.genielogiciel.mvp.view.GameView">
    <children>
       <ButtonBar prefHeight="40.0" prefWidth="800.0" styleClass="menu">
         <buttons>
-            <Button mnemonicParsing="false" text="%game.start" />
+            <Button mnemonicParsing="false" onAction="#onClickStart" text="%game.start" />
             <Button mnemonicParsing="false" text="%game.pause" />
             <Button mnemonicParsing="false" text="%game.menu" />
         </buttons>
       </ButtonBar>
-      <Canvas height="460.0" layoutY="40.0" width="788.0" />
+      <Canvas fx:id="_canva" height="460.0" layoutY="40.0" width="800.0" />
       <GridPane layoutY="500.0" prefHeight="100.0" prefWidth="800.0" styleClass="menu">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
