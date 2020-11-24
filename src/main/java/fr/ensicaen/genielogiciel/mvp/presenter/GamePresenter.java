@@ -2,6 +2,10 @@ package fr.ensicaen.genielogiciel.mvp.presenter;
 
 import fr.ensicaen.genielogiciel.mvp.model.Model;
 import fr.ensicaen.genielogiciel.mvp.model.boat.Boat;
+import fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft;
+import fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight;
+import fr.ensicaen.genielogiciel.mvp.presenter.command.Command;
+import fr.ensicaen.genielogiciel.mvp.presenter.command.CommandRegister;
 import fr.ensicaen.genielogiciel.mvp.view.GameView;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -19,11 +23,13 @@ public final class GamePresenter {
     private GraphicsContext _context;
     private Image _boat_image;
     private int _img_size = 50;
+    private CommandRegister _commandRegister;
 
     public GamePresenter(String nickName) {
         _model = new Model();
         _model.setNickname(nickName);
         _boat_image = new Image(GameView.class.getResource("boat.png").toString());
+        _commandRegister = new CommandRegister();
     }
 
     public void setView(GameView view) {
@@ -56,11 +62,15 @@ public final class GamePresenter {
     }
 
     public void boatRight() {
-        //something to make the boat turn right
+        Command c = new CmdRight(_model);
+        c.execute();
+        _commandRegister.addCommand(c);
     }
 
     public void boatLeft() {
-        //something to make the boat turn left
+        Command c = new CmdLeft(_model);
+        c.execute();
+        _commandRegister.addCommand(c);
     }
 
 

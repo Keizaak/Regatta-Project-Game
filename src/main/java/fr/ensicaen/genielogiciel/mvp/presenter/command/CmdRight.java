@@ -9,6 +9,6 @@ public class CmdRight extends Command {
 
     @Override
     public void execute() {
-        //getModel().turnRight();
+        //getModel().turnBoatRight();
     }
 }
