@@ -31,6 +31,7 @@ public final class GameView {
         stage.setScene(scene);
         view._stage = stage;
         scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> view.onKeyPressed(event.getCode()));
+        root.requestFocus();
         return view;
     }
 
@@ -51,11 +52,11 @@ public final class GameView {
 //        if (code == KeyCode.SPACE) {
 //            _gamePresenter.runGameLoop();
 //        }
-        if (code == KeyCode.D) {
+        if (code == KeyCode.D || code == KeyCode.RIGHT) {
             _gamePresenter.boatRight();
         }
-        if (code == KeyCode.Q) {
-            _gamePresenter.boatRight();
+        if (code == KeyCode.Q || code == KeyCode.LEFT) {
+            _gamePresenter.boatLeft();
         }
     }
 
