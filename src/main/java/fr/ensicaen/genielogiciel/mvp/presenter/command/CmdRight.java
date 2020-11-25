@@ -9,11 +9,6 @@ public class CmdRight extends Command {
 
     @Override
     public void execute() {
-
-    }
-
-    @Override
-    public void undo() {
-
+        //getModel().turnBoatRight();
     }
 }
