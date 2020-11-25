@@ -65,6 +65,7 @@ public final class GamePresenter {
         Command c = new CmdRight(_model);
         c.execute();
         _commandRegister.addCommand(c);
+
     }
 
     public void boatLeft() {
