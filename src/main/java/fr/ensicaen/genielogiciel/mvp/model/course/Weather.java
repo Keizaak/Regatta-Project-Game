@@ -14,11 +14,21 @@ public class Weather {
     private String _latitude;
     private String _longitude;
 
+    /**
+     * Creates a Weather object given a latitude and a longitude
+     * @param latitude latitude value
+     * @param longitude longitude value
+     */
     public Weather(String latitude, String longitude) {
         _latitude = latitude;
         _longitude = longitude;
     }
 
+    /**
+     * Load weather information from a weather API
+     * @return JSON string with weather information
+     * @throws IOException
+     */
     public String load_weather_info() throws IOException {
         BufferedReader in;
         String inputLine;
@@ -47,18 +57,41 @@ public class Weather {
         return content.toString();
     }
 
-    public void load_wind_info(String json) {
+    /**
+     * Set wind and direction given a JSON string
+     * @param json JSON formatted weather information
+     */
+    public void set_wind_info(String json) {
         JSONObject jObject  = new JSONObject(json);
         JSONObject data = jObject.getJSONObject("current_condition");
         _wind_speed = data.getFloat("wnd_spd");
         _wind_direction = data.getString("wnd_dir");
     }
 
+    /**
+     * Get the wind speed value
+     * @return wind speed value
+     */
     public float get_wind_speed() {
         return _wind_speed;
     }
 
+    /**
+     * Get the wind direction value
+     * @return wind direction value
+     */
     public String get_wind_direction() {
         return  _wind_direction;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Weather{");
+        sb.append("_wind_speed=").append(_wind_speed);
+        sb.append(", _wind_direction='").append(_wind_direction).append('\'');
+        sb.append(", _latitude='").append(_latitude).append('\'');
+        sb.append(", _longitude='").append(_longitude).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
