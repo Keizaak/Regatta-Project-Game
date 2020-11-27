@@ -2,6 +2,7 @@ package fr.ensicaen.genielogiciel.mvp.presenter;
 
 import fr.ensicaen.genielogiciel.mvp.model.Model;
 import fr.ensicaen.genielogiciel.mvp.model.boat.Boat;
+import fr.ensicaen.genielogiciel.mvp.model.boat.Vector;
 import fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft;
 import fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight;
 import fr.ensicaen.genielogiciel.mvp.presenter.command.Command;
@@ -38,7 +39,7 @@ public final class GamePresenter {
     }
 
     public void runGameLoop() {
-        final int FRAME_PER_SECONDS = 20;
+        final int FRAME_PER_SECONDS = 200;
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(FRAME_PER_SECONDS), onFinished -> {
             // What is done for each frame
             update();
@@ -57,7 +58,9 @@ public final class GamePresenter {
         //Dummy boat rendering
 
         //TODO: render at boat position
-        _context.drawImage(_boat_image,150,150,_img_size,_img_size);
+        Vector position = _model.getRegalataPosition();
+        _context.drawImage(_boat_image,position._x,position._y,_img_size,_img_size);
+        System.out.println(_model.getRegalataPosition()._x + " " + _model.getRegalataPosition()._y);
 //        System.out.println("Un tour de jeu");
     }
 
