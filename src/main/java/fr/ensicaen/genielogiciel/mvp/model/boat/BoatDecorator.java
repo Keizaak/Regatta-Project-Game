@@ -11,7 +11,7 @@ public class BoatDecorator extends Boat {
 
     void changeOrientation(Cap cap) { }
 
-    Vector changePosition(Vector v, Vector position) {
+    Vector changePosition() {
         return new Vector();
     }
 }

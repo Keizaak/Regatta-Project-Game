@@ -29,7 +29,8 @@ public class Model {
     }
 
     public void turnBoatLeft() {
-        Vector v = _regalata.changePosition(_regalata.getDirection(Boat.Cap.WEST), _regalata.getPosition());
+        _regalata.changeOrientation(Boat.Cap.WEST);
+        Vector v = _regalata.getPosition();
         _regalataPosition = v;
         /*TODO
         Do something with v ?
@@ -37,7 +38,8 @@ public class Model {
     }
 
     public void turnBoatRight() {
-        Vector v = _regalata.changePosition(_regalata.getDirection(Boat.Cap.EAST), _regalata.getPosition());
+        _regalata.changeOrientation(Boat.Cap.EAST);
+        Vector v = _regalata.getPosition();
         _regalataPosition = v;
         /*TODO
         Do something with v ?
