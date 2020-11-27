@@ -20,18 +20,19 @@ public final class GameView {
     private Stage _stage;
     @FXML
     private Canvas _canva;
+    private static Parent _root;
 
     public static GameView createView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("SpotMap.fxml"), LoginMain.getMessageBundle());
-        Parent root = fxmlLoader.load();
+        _root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(_root, 800, 600);
         Stage stage = new Stage();
         stage.setScene(scene);
         view._stage = stage;
         scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> view.onKeyPressed(event.getCode()));
-        root.requestFocus();
+        _root.requestFocus();
         return view;
     }
 
@@ -63,5 +64,6 @@ public final class GameView {
     @FXML
     private void onClickStart(Event event) {
         _gamePresenter.runGameLoop();
+        _root.requestFocus();
     }
 }
