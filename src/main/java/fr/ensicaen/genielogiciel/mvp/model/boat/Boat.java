@@ -16,5 +16,5 @@ public abstract class Boat {
 
     abstract Vector getDirection(Cap cap);
     abstract void changeOrientation(Cap cap);
-    abstract Vector changePosition(Vector direction, Vector position);
+    abstract Vector changePosition();
 }

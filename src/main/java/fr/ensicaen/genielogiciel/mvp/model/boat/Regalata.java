@@ -25,18 +25,17 @@ public class Regalata extends Boat {
         return _position;
     }
 
-    void changeOrientation(Cap cap) {
+    public void changeOrientation(Cap cap) {
         _orientation = getDirection(cap);
+        changePosition();
     }
 
-    public Vector changePosition(Vector direction, Vector position){
-        float pos_x;
-        float pos_y;
-
-        pos_x = position._x + (position._x * direction._x);
-        pos_y = position._y + (position._y * direction._y);
-        _position = new Vector(pos_x, pos_y);
-        System.out.println("Position bato " + pos_x + " " + pos_y);
+    public Vector changePosition() {
+        _position._x += _orientation._x;
+        _position._y += _orientation._y;
+        System.out.println("Position bato " + _position._x + " " + _position._y);
         return _position;
     }
+
+    /* TODO: function moving_forward (calling indefinitely changePosition) */
 }

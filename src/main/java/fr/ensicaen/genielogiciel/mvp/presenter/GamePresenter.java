@@ -58,6 +58,7 @@ public final class GamePresenter {
         //Dummy boat rendering
 
         //TODO: render at boat position
+        _context.clearRect(0, 0, _view.getCanva().getWidth(), _view.getCanva().getHeight());
         Vector position = _model.getRegalataPosition();
         _context.drawImage(_boat_image,position._x,position._y,_img_size,_img_size);
         System.out.println(_model.getRegalataPosition()._x + " " + _model.getRegalataPosition()._y);
