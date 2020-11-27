@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -37,6 +38,8 @@ public final class GameView {
     }
 
     public void setPresenter(GamePresenter gamePresenter) {
+    //  _canva.setTranslateX(_canva.getWidth()/2);
+    // _canva.setTranslateY(_canva.getHeight()/2);
         _gamePresenter = gamePresenter;
     }
 
@@ -65,5 +68,7 @@ public final class GameView {
     private void onClickStart(Event event) {
         _gamePresenter.runGameLoop();
         _root.requestFocus();
+        Button b = (Button)event.getSource();
+        b.setDisable(true);
     }
 }

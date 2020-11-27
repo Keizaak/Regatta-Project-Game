@@ -14,6 +14,7 @@ import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -36,10 +37,11 @@ public final class GamePresenter {
     public void setView(GameView view) {
         _view = view;
         _context = _view.getCanva().getGraphicsContext2D();
+        _model.initPosition((float)_view.getCanva().getWidth()/2, (float)_view.getCanva().getHeight()/2);
     }
 
     public void runGameLoop() {
-        final int FRAME_PER_SECONDS = 200;
+        final int FRAME_PER_SECONDS = 20;
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(FRAME_PER_SECONDS), onFinished -> {
             // What is done for each frame
             update();
@@ -51,6 +53,8 @@ public final class GamePresenter {
 
     private void update() {
         // Update the model
+        _model.movingForward();
+
     }
 
     private void render() {
@@ -59,10 +63,17 @@ public final class GamePresenter {
 
         //TODO: render at boat position
         _context.clearRect(0, 0, _view.getCanva().getWidth(), _view.getCanva().getHeight());
+        _context.save();
         Vector position = _model.getRegalataPosition();
+        rotate(_context, _model.getOrientation(),position._x  + _img_size/2.,position._y + _img_size/2.);
         _context.drawImage(_boat_image,position._x,position._y,_img_size,_img_size);
-        System.out.println(_model.getRegalataPosition()._x + " " + _model.getRegalataPosition()._y);
+        _context.restore();
 //        System.out.println("Un tour de jeu");
+    }
+
+    private void rotate(GraphicsContext gc, double angle, double px, double py) {
+        Rotate r = new Rotate(angle, px, py);
+        gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
     }
 
     public void boatRight() {
