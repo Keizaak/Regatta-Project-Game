@@ -2,7 +2,7 @@ package fr.ensicaen.genielogiciel.mvp.model.boat;
 
 public abstract class Boat {
 
-    enum Cap {
+    public enum Cap {
         EAST,
         WEST,
         NORTH,

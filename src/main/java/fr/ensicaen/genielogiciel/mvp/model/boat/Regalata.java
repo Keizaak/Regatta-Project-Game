@@ -10,7 +10,7 @@ public class Regalata extends Boat {
         _orientation = getDirection(Cap.NORTH);
     }
 
-    Vector getDirection(Cap cap) {
+    public Vector getDirection(Cap cap) {
         switch (cap) {
             case EAST:
                 return new Vector(1, 0);
@@ -21,11 +21,15 @@ public class Regalata extends Boat {
         }
     }
 
+    public Vector getPosition() {
+        return _position;
+    }
+
     void changeOrientation(Cap cap) {
         _orientation = getDirection(cap);
     }
 
-    Vector changePosition(Vector direction, Vector position){
+    public Vector changePosition(Vector direction, Vector position){
         float pos_x;
         float pos_y;
 
