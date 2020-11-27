@@ -17,71 +17,76 @@ Le projet a la structure suivante :
 
     .
     │
-    ├── build.gradle, settings.gradle, gradle.properties
+    ├── build.gradle, settings.gradle, gradle.properties ...
     │
     ├── .gitlab-ci.yml
     │
-    ├── files
+    ├── gradle
     │
+    ├── files
+    │       ├── Architexture.txt
+    │       ├── Rapport-Groupe-TP1.pdf
+    │       ├── UML-Projet.png
+    │       
     └── src
         ├── main
-            ├── main.iml
-            │ 
-            ├── java
-            │      ├── fr.ensicaen.genielogiciel.mvp
-            │          ├──LoginMain.java        
-            │          ├──model
-            │          │    ├──Model.java   
-            │          │    ├──boat    
-            │          │    │    ├──Boat.java   
-            │          │    │    ├──BoatDecorator.java   
-            │          │    │    ├──Regalata.java   
-            │          │    │    ├──Vector.java   
-            │          │    │    │       
-            │          │    │    ├──crew    
-            │          │    │    │     ├──Crew.java    
-            │          │    │    │     ├──FourMembersCrew.java 
-            │          │    │    │     ├──TwoMembersCrew.java
-            │          │    │    │            
-            │          │    │    ├──sail  
-            │          │    │         ├──LargeSail.java          
-            │          │    │         ├──MeidumSail.java  
-            │          │    │         ├──Sail.java  
-            │          │    │        
-            │          │    ├──course    
-            │          │         ├──Buoy.java   
-            │          │         ├──Course.java   
-            │          │         ├──Path.java
-            │          │         ├──Weather.java   
-            │          │    
-            │          ├──presenter
-            │          │    ├──GamePresenter.java 
-            │          │    ├──LoginPresenter.java 
-            │          │    │  
-            │          │    ├──command  
-            │          │         ├──CmdLeft.java  
-            │          │         ├──CmdRight.java  
-            │          │         ├──Command.java 
-            │          │         ├──CommandRegister.java 
-            │          │         ├──FileReader.java 
-            │          │         ├──FileWriter.java 
-            │          │        
-            │          ├──view
-            │               ├──GameView.java 
-            │               ├──LoginView.java 
-            │ 
-            ├── ressources
-                   ├── fr.ensicaen.genielogiciel.mvp
-                       ├──MessageBundle.properties   
-                       ├──MessageBundle_en_US.properties  
-                       │        
-                       ├──view   
-                            ├──boat.png   
-                            ├──LoginDialog.css         
-                            ├──Logindialog.fxml         
-                            ├──sand.jpg         
-                            ├──SpotMap.css         
-                            ├──SpotMap.fxml               
+        │   ├── main.iml
+        │   │ 
+        │   ├── java
+        │   │      ├── fr.ensicaen.genielogiciel.mvp
+        │   │          ├──LoginMain.java        
+        │   │          ├──model
+        │   │          │    ├──Model.java   
+        │   │          │    ├──boat    
+        │   │          │    │    ├──Boat.java   
+        │   │          │    │    ├──BoatDecorator.java   
+        │   │          │    │    ├──Regalata.java   
+        │   │          │    │    ├──Vector.java   
+        │   │          │    │    │       
+        │   │          │    │    ├──crew    
+        │   │          │    │    │     ├──Crew.java    
+        │   │          │    │    │     ├──FourMembersCrew.java 
+        │   │          │    │    │     ├──TwoMembersCrew.java
+        │   │          │    │    │            
+        │   │          │    │    ├──sail  
+        │   │          │    │         ├──LargeSail.java          
+        │   │          │    │         ├──MeidumSail.java  
+        │   │          │    │         ├──Sail.java  
+        │   │          │    │        
+        │   │          │    ├──course    
+        │   │          │         ├──Buoy.java   
+        │   │          │         ├──Course.java   
+        │   │          │         ├──Path.java
+        │   │          │         ├──Weather.java   
+        │   │          │    
+        │   │          ├──presenter
+        │   │          │    ├──GamePresenter.java 
+        │   │          │    ├──LoginPresenter.java 
+        │   │          │    │  
+        │   │          │    ├──command  
+        │   │          │         ├──CmdLeft.java  
+        │   │          │         ├──CmdRight.java  
+        │   │          │         ├──Command.java 
+        │   │          │         ├──CommandRegister.java 
+        │   │          │         ├──FileReader.java 
+        │   │          │         ├──FileWriter.java 
+        │   │          │        
+        │   │          ├──view
+        │   │               ├──GameView.java 
+        │   │               ├──LoginView.java 
+        │   │ 
+        │   ├── ressources
+        │          ├── fr.ensicaen.genielogiciel.mvp
+        │              ├──MessageBundle.properties   
+        │              ├──MessageBundle_en_US.properties  
+        │              │        
+        │              ├──view   
+        │                   ├──boat.png   
+        │                   ├──LoginDialog.css         
+        │                   ├──Logindialog.fxml         
+        │                   ├──sand.jpg         
+        │                   ├──SpotMap.css         
+        │                   ├──SpotMap.fxml               
         ├── test
             ├── test.iml      
             │ 
