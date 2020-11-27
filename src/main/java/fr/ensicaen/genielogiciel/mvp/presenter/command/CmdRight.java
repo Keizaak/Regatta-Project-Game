@@ -1,5 +1,14 @@
 package fr.ensicaen.genielogiciel.mvp.presenter.command;
 
-public class CmdRight {
+import fr.ensicaen.genielogiciel.mvp.model.Model;
 
+public class CmdRight extends Command {
+    public CmdRight(Model model) {
+        super(model);
+    }
+
+    @Override
+    public void execute() {
+        getModel().turnBoatRight();
+    }
 }

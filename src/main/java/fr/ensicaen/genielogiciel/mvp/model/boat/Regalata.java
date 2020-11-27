@@ -1,27 +1,41 @@
 package fr.ensicaen.genielogiciel.mvp.model.boat;
 
-import java.util.Vector;
 
 public class Regalata extends Boat {
 
-    Vector getDirection(Cap cap) {
+    public Regalata() {
+        _windOrientation = Cap.NORTH;
+        _windSpeed = 1;
+        _position = new Vector();
+        _orientation = getDirection(Cap.NORTH);
+    }
+
+    public Vector getDirection(Cap cap) {
         switch (cap) {
-            case NORTH:
-                return new Vector(0, 1);
             case EAST:
                 return new Vector(1, 0);
-            case SOUTH:
-                return new Vector(0, -1);
             case WEST:
                 return new Vector(-1, 0);
             default:
-                return new Vector();
+                return new Vector(0, 1);
         }
     }
 
-    void changeDirection(Vector v){
-        /* position * direction */
+    public Vector getPosition() {
+        return _position;
     }
 
+    void changeOrientation(Cap cap) {
+        _orientation = getDirection(cap);
+    }
 
+    public Vector changePosition(Vector direction, Vector position){
+        float pos_x;
+        float pos_y;
+
+        pos_x = position._x + (position._x * direction._x);
+        pos_y = position._y + (position._y * direction._y);
+
+        return new Vector(pos_x, pos_y);
+    }
 }

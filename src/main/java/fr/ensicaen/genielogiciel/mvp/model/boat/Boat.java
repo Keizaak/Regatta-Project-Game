@@ -1,24 +1,20 @@
 package fr.ensicaen.genielogiciel.mvp.model.boat;
 
-import java.util.Vector;
-
 public abstract class Boat {
 
-    enum Cap {
-        NORTH,
+    public enum Cap {
         EAST,
-        SOUTH,
-        WEST
+        WEST,
+        NORTH,
+        SOUTH
     }
+
     protected Vector _position;
+    protected Vector _orientation;
+    protected Cap _windOrientation;
+    protected float _windSpeed;
 
-    /* TODO: abstract */
-    Vector getDirection(Cap cap) {
-        return new Vector();
-    }
-
-    /* TODO: abstract */
-    void changeDirection(Vector v) {
-
-    }
+    abstract Vector getDirection(Cap cap);
+    abstract void changeOrientation(Cap cap);
+    abstract Vector changePosition(Vector direction, Vector position);
 }

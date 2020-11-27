@@ -1,5 +1,14 @@
 package fr.ensicaen.genielogiciel.mvp.presenter.command;
 
-public class CmdLeft {
+import fr.ensicaen.genielogiciel.mvp.model.Model;
 
+public class CmdLeft extends Command {
+    public CmdLeft(Model model) {
+        super(model);
+    }
+
+    @Override
+    public void execute() {
+        getModel().turnBoatLeft();
+    }
 }
