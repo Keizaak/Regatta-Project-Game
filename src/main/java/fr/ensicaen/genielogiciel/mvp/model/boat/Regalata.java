@@ -35,7 +35,8 @@ public class Regalata extends Boat {
 
         pos_x = position._x + (position._x * direction._x);
         pos_y = position._y + (position._y * direction._y);
-
-        return new Vector(pos_x, pos_y);
+        _position = new Vector(pos_x, pos_y);
+        System.out.println("Position bato " + pos_x + " " + pos_y);
+        return _position;
     }
 }
