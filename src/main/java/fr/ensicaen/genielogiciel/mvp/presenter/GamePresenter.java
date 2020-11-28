@@ -38,6 +38,8 @@ public final class GamePresenter {
         _view = view;
         _context = _view.getCanva().getGraphicsContext2D();
         _model.initPosition((float)_view.getCanva().getWidth()/2, (float)_view.getCanva().getHeight()/2);
+        Vector position = _model.getRegalataPosition();
+        _context.drawImage(_boat_image,position._x,position._y,_img_size,_img_size);
     }
 
     public void runGameLoop() {
@@ -60,19 +62,18 @@ public final class GamePresenter {
     private void render() {
         // Display the result on the view
         //Dummy boat rendering
-
-        //TODO: render at boat position
         _context.clearRect(0, 0, _view.getCanva().getWidth(), _view.getCanva().getHeight());
         _context.save();
         Vector position = _model.getRegalataPosition();
-        rotate(_context, _model.getOrientation(),position._x  + _img_size/2.,position._y + _img_size/2.);
+
+        rotateBoatImage(_context, _model.getOrientation(),position._x  + _img_size/2.,position._y + _img_size/2.);
         _context.drawImage(_boat_image,position._x,position._y,_img_size,_img_size);
         _context.restore();
 //        System.out.println("Un tour de jeu");
     }
 
-    private void rotate(GraphicsContext gc, double angle, double px, double py) {
-        Rotate r = new Rotate(angle, px, py);
+    private void rotateBoatImage(GraphicsContext gc, double angle, double px, double py) {
+        Rotate r = new Rotate(((angle+90)%360), px, py);
         gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
     }
 
