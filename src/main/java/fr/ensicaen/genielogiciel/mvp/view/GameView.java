@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -31,7 +32,7 @@ public final class GameView {
         Stage stage = new Stage();
         stage.setScene(scene);
         view._stage = stage;
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> view.onKeyPressed(event.getCode()));
+        _root.addEventHandler(KeyEvent.KEY_PRESSED, event -> view.onKeyPressed(event.getCode()));
         _root.requestFocus();
         return view;
     }
@@ -64,6 +65,8 @@ public final class GameView {
     @FXML
     private void onClickStart(Event event) {
         _gamePresenter.runGameLoop();
-        _root.requestFocus();
+        Button b = (Button)event.getSource();
+        b.setDisable(true);
+        _canva.requestFocus();
     }
 }

@@ -23,6 +23,15 @@ public class Model {
     public void setNickname(String nickname) {
         _nickname = nickname;
     }
+    
+    public void initPosition(float x, float y) {
+        _regalata.setPosition(new Vector(x, y));
+        _regalataPosition = _regalata.getPosition();
+    }
+    
+    public float getOrientation() {
+        return _regalata.getOrientation();
+    }
 
     public Vector getRegalataPosition() {
         return _regalataPosition;
@@ -44,5 +53,9 @@ public class Model {
         /*TODO
         Do something with v ?
          */
+    }
+    
+    public void movingForward() {
+        _regalata.changePosition();
     }
 }
