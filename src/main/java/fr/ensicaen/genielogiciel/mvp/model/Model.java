@@ -26,6 +26,7 @@ public class Model {
     
     public void initPosition(float x, float y) {
         _regalata.setPosition(new Vector(x, y));
+        _regalataPosition = _regalata.getPosition();
     }
     
     public float getOrientation() {

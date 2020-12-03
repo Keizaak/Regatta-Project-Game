@@ -17,7 +17,7 @@ public abstract class Boat {
     protected Boat() {
         _position = new Vector();
         _direction = Cap.NORTH;
-        _orientation = 0;
+        _orientation = 270;
         _windDirection = Cap.SOUTH;
         _windSpeed = 1;
     }
@@ -65,24 +65,28 @@ public abstract class Boat {
     public void changeOrientation(Cap cap) {
         switch (cap) {
             case EAST:
-                _orientation = (_orientation - 5) % 360;
+                _orientation = (_orientation + 5) % 360;
                 break;
             case WEST:
-                _orientation = (_orientation + 5) % 360;
+                _orientation = (_orientation - 5) % 360;
                 break;
             default:
                 break;
         }
         changeDirection();
         changePosition();
+    }
+
+    public void windAction() {
 
     }
 
     public Vector changePosition() {
-        _position._x += Math.cos(_orientation) * _windSpeed;
-        _position._y += Math.sin(_orientation) * _windSpeed;
-        System.out.println("Boat position: " + _position._x + " " + _position._y);
-        System.out.println("Boat orientation: " + _orientation);
+
+        _position._x += Math.cos(Math.PI/180 * _orientation) * _windSpeed;
+        _position._y += Math.sin(Math.PI/180 * _orientation) * _windSpeed;
+/*        System.out.println("Boat position: " + _position._x + " " + _position._y);
+        System.out.println("Boat orientation: " + _orientation);*/
         return _position;
     }
 }

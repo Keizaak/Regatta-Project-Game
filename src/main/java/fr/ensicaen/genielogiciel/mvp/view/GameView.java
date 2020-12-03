@@ -32,14 +32,12 @@ public final class GameView {
         Stage stage = new Stage();
         stage.setScene(scene);
         view._stage = stage;
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> view.onKeyPressed(event.getCode()));
+        _root.addEventHandler(KeyEvent.KEY_PRESSED, event -> view.onKeyPressed(event.getCode()));
         _root.requestFocus();
         return view;
     }
 
     public void setPresenter(GamePresenter gamePresenter) {
-    //  _canva.setTranslateX(_canva.getWidth()/2);
-    // _canva.setTranslateY(_canva.getHeight()/2);
         _gamePresenter = gamePresenter;
     }
 
@@ -67,8 +65,8 @@ public final class GameView {
     @FXML
     private void onClickStart(Event event) {
         _gamePresenter.runGameLoop();
-        _root.requestFocus();
         Button b = (Button)event.getSource();
         b.setDisable(true);
+        _canva.requestFocus();
     }
 }
