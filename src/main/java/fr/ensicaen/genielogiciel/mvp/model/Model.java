@@ -3,17 +3,18 @@ package fr.ensicaen.genielogiciel.mvp.model;
 import fr.ensicaen.genielogiciel.mvp.model.boat.Boat;
 import fr.ensicaen.genielogiciel.mvp.model.boat.Regalata;
 import fr.ensicaen.genielogiciel.mvp.model.boat.Vector;
+import fr.ensicaen.genielogiciel.mvp.model.course.Course;
 
 public class Model {
     private Regalata _regalata;
     private String _nickname;
     private Vector _regalataPosition;
 
-
-
     public Model() {
         _regalata = new Regalata();
         _regalataPosition = _regalata.getPosition();
+
+        new Course(); ////
     }
 
     public String getNickname() {
