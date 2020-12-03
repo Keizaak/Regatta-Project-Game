@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Vector;
 
 public class PathFileReader {
     public void loadBuoys(List<Buoy> buoys) {
@@ -14,9 +13,7 @@ public class PathFileReader {
 
             while ((line = br.readLine()) != null) {
                 String[] coords = line.split("[ \n]");
-                Vector v = new Vector(Integer.parseInt(coords[0]), Integer.parseInt(coords[1]));
-                buoys.add(new Buoy(v)); // \n ? Vector n'est pas une classe Java mais de boat
-                System.out.println(v);
+                buoys.add(new Buoy(Integer.parseInt(coords[0]), Integer.parseInt(coords[1])));
             }
 
         } catch (IOException e) {

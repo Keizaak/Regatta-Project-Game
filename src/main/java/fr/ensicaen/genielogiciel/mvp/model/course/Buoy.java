@@ -2,13 +2,14 @@ package fr.ensicaen.genielogiciel.mvp.model.course;
 
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Vector;
 
 public class Buoy implements Observer {
-    private final Vector _position;
+    private final int _x;
+    private final int _y;
 
-    public Buoy(Vector position) {
-        _position = position;
+    public Buoy(int x, int y) {
+        _x = x;
+        _y = y;
     }
 
     @Override

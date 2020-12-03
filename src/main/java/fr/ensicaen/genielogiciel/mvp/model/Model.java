@@ -14,7 +14,7 @@ public class Model {
         _regalata = new Regalata();
         _regalataPosition = _regalata.getPosition();
 
-        new Course(); ////
+        new Course(); //// A CHANGER
     }
 
     public String getNickname() {
