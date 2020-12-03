@@ -41,21 +41,19 @@ public class Model {
         _regalata.changeOrientation(Boat.Cap.WEST);
         Vector v = _regalata.getPosition();
         _regalataPosition = v;
-        /*TODO
-        Do something with v ?
-         */
+        /* TODO: Do something with v ? */
     }
 
     public void turnBoatRight() {
         _regalata.changeOrientation(Boat.Cap.EAST);
         Vector v = _regalata.getPosition();
         _regalataPosition = v;
-        /*TODO
-        Do something with v ?
-         */
+        /* TODO: Do something with v ? */
     }
     
     public void movingForward() {
+        // _regalata.windAction();
         _regalata.changePosition();
+
     }
 }
