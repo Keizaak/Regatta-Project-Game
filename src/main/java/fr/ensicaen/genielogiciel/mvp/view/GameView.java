@@ -2,6 +2,7 @@ package fr.ensicaen.genielogiciel.mvp.view;
 
 import fr.ensicaen.genielogiciel.mvp.LoginMain;
 import fr.ensicaen.genielogiciel.mvp.presenter.GamePresenter;
+import fr.ensicaen.genielogiciel.mvp.presenter.LoginPresenter;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public final class GameView {
     private GamePresenter _gamePresenter;
@@ -22,6 +24,7 @@ public final class GameView {
     @FXML
     private Canvas _canva;
     private static Parent _root;
+    private boolean _hasStarted;
 
     public static GameView createView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("SpotMap.fxml"), LoginMain.getMessageBundle());
@@ -30,14 +33,21 @@ public final class GameView {
         fxmlLoader.setController(view);
         Scene scene = new Scene(_root, 800, 600);
         Stage stage = new Stage();
+        stage.setTitle(ResourceBundle.getBundle("fr.ensicaen.genielogiciel.mvp.MessageBundle").getString("project.title"));
         stage.setScene(scene);
         view._stage = stage;
-        _root.addEventHandler(KeyEvent.KEY_PRESSED, event -> view.onKeyPressed(event.getCode()));
+        _root.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.UP) {
+                event.consume();
+            }
+            view.onKeyPressed(event.getCode());
+        });
         _root.requestFocus();
         return view;
     }
 
     public void setPresenter(GamePresenter gamePresenter) {
+        _hasStarted = false;
         _gamePresenter = gamePresenter;
     }
 
@@ -54,19 +64,39 @@ public final class GameView {
 //        if (code == KeyCode.SPACE) {
 //            _gamePresenter.runGameLoop();
 //        }
-        if (code == KeyCode.D || code == KeyCode.RIGHT) {
-            _gamePresenter.boatRight();
-        }
-        if (code == KeyCode.Q || code == KeyCode.LEFT) {
-            _gamePresenter.boatLeft();
+        if (_hasStarted) {
+            if (code == KeyCode.D || code == KeyCode.RIGHT) {
+                _gamePresenter.boatRight();
+            }
+            if (code == KeyCode.Q || code == KeyCode.LEFT) {
+                _gamePresenter.boatLeft();
+            }
         }
     }
 
     @FXML
     private void onClickStart(Event event) {
+        _hasStarted = true;
         _gamePresenter.runGameLoop();
         Button b = (Button)event.getSource();
         b.setDisable(true);
         _canva.requestFocus();
+    }
+
+    @FXML
+    private void onClickMenu(Event event) throws IOException {
+        _gamePresenter.getTimeline().stop();
+
+        FXMLLoader loader = new FXMLLoader(LoginView.class.getResource("LoginDialog.fxml"), LoginMain.getMessageBundle());
+        Parent root = loader.load();
+        LoginView view = loader.getController();
+        Scene scene = new Scene(root); //, 400, 120);
+
+        LoginView loginView = LoginView.createView(_stage);
+        LoginPresenter presenter = new LoginPresenter();
+        view.setPresenter(presenter);
+        presenter.setView(loginView);
+
+        _stage.setScene(scene);
     }
 }
