@@ -52,7 +52,7 @@ public class Model {
     }
     
     public void movingForward() {
-        // _regalata.windAction();
+        _regalata.windAction();
         _regalata.changePosition();
 
     }
