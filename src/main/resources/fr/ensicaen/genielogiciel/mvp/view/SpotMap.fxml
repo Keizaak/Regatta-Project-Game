@@ -14,8 +14,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="800.0" styleClass="menu">
         <buttons>
             <Button mnemonicParsing="false" onAction="#onClickStart" text="%game.start" />
-            <Button mnemonicParsing="false" text="%game.pause" />
-            <Button mnemonicParsing="false" text="%game.menu" />
+            <Button mnemonicParsing="false" onAction="#onClickMenu" text="%game.menu" />
         </buttons>
       </ButtonBar>
       <Canvas fx:id="_canva" height="460.0" layoutY="40.0" width="800.0" />

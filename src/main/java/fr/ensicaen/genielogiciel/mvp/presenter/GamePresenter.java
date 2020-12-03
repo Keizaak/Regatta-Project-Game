@@ -26,6 +26,7 @@ public final class GamePresenter {
     private Image _boat_image;
     private int _img_size = 50;
     private CommandRegister _commandRegister;
+    private Timeline _timeline;
 
     public GamePresenter(String nickName) {
         _model = new Model();
@@ -44,13 +45,17 @@ public final class GamePresenter {
 
     public void runGameLoop() {
         final int FRAME_PER_SECONDS = 20;
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(FRAME_PER_SECONDS), onFinished -> {
+        _timeline = new Timeline(new KeyFrame(Duration.millis(FRAME_PER_SECONDS), onFinished -> {
             // What is done for each frame
             update();
             render();
         }));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+        _timeline.setCycleCount(Animation.INDEFINITE);
+        _timeline.play();
+    }
+
+    public Timeline getTimeline() {
+        return _timeline;
     }
 
     private void update() {

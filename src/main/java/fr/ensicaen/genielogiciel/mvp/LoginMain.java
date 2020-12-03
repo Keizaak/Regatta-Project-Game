@@ -1,8 +1,10 @@
 package fr.ensicaen.genielogiciel.mvp;
 
 import fr.ensicaen.genielogiciel.mvp.presenter.LoginPresenter;
+import fr.ensicaen.genielogiciel.mvp.view.GameView;
 import fr.ensicaen.genielogiciel.mvp.view.LoginView;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.ResourceBundle;
@@ -19,6 +21,7 @@ public final class LoginMain extends Application {
     @Override
     public void start(final Stage primaryStage) throws Exception {
         primaryStage.setTitle(getMessageBundle().getString("project.title"));
+        primaryStage.getIcons().add(new Image(GameView.class.getResource("boat.png").toString()));
         LoginView view = LoginView.createView(primaryStage);
         LoginPresenter presenter = new LoginPresenter();
         view.setPresenter(presenter);
