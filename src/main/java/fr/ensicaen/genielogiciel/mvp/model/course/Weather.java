@@ -31,12 +31,10 @@ public class Weather {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Weather{");
-        sb.append("_wind_speed=").append(_wind_speed);
-        sb.append(", _wind_direction='").append(_wind_direction).append('\'');
-        sb.append(", _latitude='").append(_latitude).append('\'');
-        sb.append(", _longitude='").append(_longitude).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "Weather{" + "_wind_speed=" + _wind_speed +
+                ", _wind_direction='" + _wind_direction + '\'' +
+                ", _latitude='" + _latitude + '\'' +
+                ", _longitude='" + _longitude + '\'' +
+                '}';
     }
 }

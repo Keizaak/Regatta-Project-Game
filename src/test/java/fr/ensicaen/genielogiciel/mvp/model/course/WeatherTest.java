@@ -15,12 +15,11 @@ public class WeatherTest {
     @Test
     public void load_weather_info() {
         Weather weather = new Weather(_latitude, _longitude);
-        WeatherLoader weatherLoader = new WeatherLoader(_url);
         String json_data;
         float wind_speed;
         String wind_direction;
         try {
-            json_data = weatherLoader.load_weather_info();
+            json_data = WeatherLoader.loadWeatherInfo(_url);
             wind_speed = weather.get_wind_speed();
             wind_direction = weather.get_wind_direction();
             weather.load_wind_info(json_data);
