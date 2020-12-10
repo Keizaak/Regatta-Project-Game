@@ -1,11 +1,18 @@
 package fr.ensicaen.genielogiciel.mvp.model.course;
 
-import fr.ensicaen.genielogiciel.mvp.presenter.command.FileReader;
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Path implements FileReader {
-    private Buoy _buoy;
-    private Path() {
-        _buoy = new Buoy();
+public class Path {
+    private final List<Buoy> _buoys;
+
+    public Path() {
+        _buoys = new ArrayList<>();
     }
 
+    public void loadPath() {
+        _buoys.clear();
+        new PathFileReader().loadBuoys(_buoys);
+    }
 }

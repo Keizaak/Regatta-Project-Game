@@ -1,8 +1,11 @@
 package fr.ensicaen.genielogiciel.mvp.model.boat;
 
+import fr.ensicaen.genielogiciel.mvp.model.Vector;
+
 import java.util.Observable;
 
 public abstract class Boat extends Observable {
+    /* TODO: remove string values (here for test purpose) */
     public enum Cap {
         EAST("EAST"),
         WEST("WEST"),
@@ -27,12 +30,13 @@ public abstract class Boat extends Observable {
     private float _windSpeed;
     private boolean _isFaster;
 
+    /* TODO: get wind direction and speed from JSON (it's fixed for the moment) */
     protected Boat() {
         _position = new Vector();
         _direction = Cap.NORTH;
         _orientation = 270;
         _windDirection = Cap.SOUTH;
-        _windSpeed = 1f;
+        _windSpeed = 0.80f;
         _isFaster = false;
     }
 
@@ -48,10 +52,9 @@ public abstract class Boat extends Observable {
         _position = position;
     }
 
+    /* TODO: optimize... */
     public void windAction() {
-        System.out.println("Direction: " + _direction.getValue());
         if (_windDirection == _direction) {
-            System.out.println("Same direction");
             if (!_isFaster) {
                 _windSpeed *= 1.5;
                 _isFaster = true;
@@ -59,7 +62,6 @@ public abstract class Boat extends Observable {
         } else if ((_windDirection == Cap.NORTH && _direction == Cap.SOUTH) || (_windDirection == Cap.SOUTH && _direction == Cap.NORTH)
                 || (_windDirection == Cap.WEST && _direction == Cap.EAST) || (_windDirection == Cap.EAST && _direction == Cap.WEST))
         {
-            System.out.println("Opposite direction");
             if (_isFaster) {
                 _windSpeed /= 1.5;
                 _isFaster = false;
@@ -97,7 +99,6 @@ public abstract class Boat extends Observable {
                     break;
             }
         }
-        //System.out.println("Vitesse: " + _windSpeed);
     }
 
     public Vector getDirection(Cap cap) {
@@ -115,9 +116,15 @@ public abstract class Boat extends Observable {
         }
     }
 
-    /* TODO: issue with counterclockwise */
     public void changeDirection() {
-        float orientationTmp = _orientation % 360;
+        float orientationTmp;
+
+        if (_orientation < 0) {
+            orientationTmp = (_orientation + 360) % 360;
+        } else {
+            orientationTmp = _orientation % 360;
+        }
+
         if ((orientationTmp < 45 && orientationTmp >= 0) || (orientationTmp < 360 && orientationTmp >= 315)) {
             _direction = Cap.EAST;
         } else if (orientationTmp < 135 && orientationTmp >= 45) {

@@ -1,4 +1,4 @@
-package fr.ensicaen.genielogiciel.mvp.model.boat;
+package fr.ensicaen.genielogiciel.mvp.model;
 
 import java.util.Objects;
 

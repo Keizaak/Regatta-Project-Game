@@ -3,7 +3,7 @@ package fr.ensicaen.genielogiciel.mvp.presenter.command;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandRegister implements FileWriter, FileReader {
+public class CommandRegister {
     private List<Command> _commandHistory;
 
     public CommandRegister() {
