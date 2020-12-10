@@ -15,10 +15,10 @@ public class Model {
     private String _nickname;
     private Vector _regalataPosition;
     private Weather _weather;
-    private boolean _gameFinished;
+    private boolean _replayEnded;
 
     public Model() {
-        _gameFinished = false;
+        _replayEnded = false;
         _weather = new Weather();
         try {
             String json_data = WeatherLoader.loadWeatherInfo("49.283", "-0.25");
@@ -91,5 +91,22 @@ public class Model {
     public void movingForward() {
         _regalata.windAction();
         _regalata.changePosition();
+    }
+
+    public void replay() {
+        _replayEnded = false;
+        for (Buoy b : _path.getBuoys()) {
+            b.setValidated(false);
+        }
+        _regalata = new Regalata(_weather.getWindDirection(),_weather.getWindSpeed());
+        _regalataPosition = _regalata.getPosition();
+    }
+
+    public void setReplayEnded(boolean b) {
+        _replayEnded = b;
+    }
+
+    public boolean hasReplayEnded() {
+        return _replayEnded;
     }
 }

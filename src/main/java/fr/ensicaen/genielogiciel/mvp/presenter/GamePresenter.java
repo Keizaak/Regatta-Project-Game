@@ -28,12 +28,14 @@ public final class GamePresenter {
     private int _img_size = 50;
     private CommandRegister _commandRegister;
     private Timeline _timeline;
-    long _unixTimeStart;
-    long _unixTimeEnd;
+    private long _unixTimeStart;
+    private long _unixTimeEnd;
+    private boolean _isReplay;
 
     public GamePresenter(String nickName) {
         _unixTimeStart = 0;
         _unixTimeEnd = 0;
+        _isReplay = false;
         _model = new Model();
         _model.setNickname(nickName);
         _boatImage = new Image(GameView.class.getResource("boat.png").toString());
@@ -41,20 +43,26 @@ public final class GamePresenter {
         _commandRegister = new CommandRegister();
     }
 
-    public void setView(GameView view) {
+    public boolean isReplay() {
+        return _isReplay;
+    }
+
+    public void setView( GameView view) {
         _view = view;
         _context = _view.getCanvas().getGraphicsContext2D();
         _model.initPosition((float)_view.getCanvas().getWidth()/2, (float)_view.getCanvas().getHeight()/2);
         Vector position = _model.getRegalataPosition();
         _context.drawImage(_boatImage,position.x,position.y,_img_size,_img_size);
-
     }
 
     public void runGameLoop() {
+        //Ces 2 commandes permettent d'initialiser les timer du replay
+        boatLeft();
+        boatRight();
+
         _unixTimeStart = Instant.now().getEpochSecond();
         final int FRAME_PER_SECONDS = 20;
         _timeline = new Timeline(new KeyFrame(Duration.millis(FRAME_PER_SECONDS), onFinished -> {
-            // What is done for each frame
             update();
             render();
         }));
@@ -69,12 +77,30 @@ public final class GamePresenter {
     private void update() {
         // Update the model
         _model.movingForward();
-        _view.getBoatDirection().setText(_model.getBoatDirection().toString());
-        _view.getWindSpeed().setText("" + _model.getWeather().getWindSpeed());
-        _view.getWindDirection().setText(_model.getWeather().getWindDirection().toString());
+        if (!isReplay()) {
+            _view.getBoatDirection().setText(_model.getBoatDirection().toString());
+            _view.getWindSpeed().setText("" + _model.getWeather().getWindSpeed());
+            _view.getWindDirection().setText(_model.getWeather().getWindDirection().toString());
+        }
+
+        if (isReplay() && _model.hasReplayEnded()) {
+            _timeline.stop();
+        }
+
         if (_model.isGameFinished()) {
             _timeline.stop();
+            _commandRegister.saveGame();
             _unixTimeEnd = Instant.now().getEpochSecond();
+
+            _model.replay();
+            _model.initPosition((float)_view.getCanvas().getWidth()/2, (float)_view.getCanvas().getHeight()/2);
+            Vector position = _model.getRegalataPosition();
+            _context.drawImage(_boatImage,position.x,position.y,_img_size,_img_size);
+
+            _view.getBoatDirection().setText("");
+            _view.getWindSpeed().setText("");
+            _view.getWindDirection().setText("");
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setTitle(ResourceBundle.getBundle("fr.ensicaen.genielogiciel.mvp.MessageBundle").getString("winning.title"));
@@ -85,8 +111,6 @@ public final class GamePresenter {
     }
 
     private void render() {
-        // Display the result on the view
-        //Dummy boat rendering
         _context.clearRect(0, 0, _view.getCanvas().getWidth(), _view.getCanvas().getHeight());
         _context.save();
         Vector position = _model.getRegalataPosition();
@@ -115,6 +139,12 @@ public final class GamePresenter {
         Command c = new CmdLeft(_model);
         c.execute();
         _commandRegister.addCommand(c);
+    }
+
+    public void replay() {
+        _isReplay = true;
+        runGameLoop();
+        _commandRegister.replay(_model);
     }
 
 }

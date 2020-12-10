@@ -86,7 +86,7 @@ public final class GameView {
 //        if (code == KeyCode.SPACE) {
 //            _gamePresenter.runGameLoop();
 //        }
-        if (_hasStarted) {
+        if (_hasStarted && !_gamePresenter.isReplay()) {
             if (code == KeyCode.D || code == KeyCode.RIGHT) {
                 _gamePresenter.boatRight();
             }
@@ -121,4 +121,10 @@ public final class GameView {
 
         _stage.setScene(scene);
     }
+
+    @FXML
+    public void onClickReplay(Event event) {
+        _gamePresenter.replay();
+    }
+
 }
