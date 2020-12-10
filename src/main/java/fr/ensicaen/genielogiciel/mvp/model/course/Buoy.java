@@ -19,6 +19,10 @@ public class Buoy implements Observer {
         _isValidated = false;
     }
 
+    public boolean isValidated() {
+        return _isValidated;
+    }
+
     public Vector getPosition() {
         return _position;
     }

@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -22,7 +22,14 @@ public final class GameView {
     private GamePresenter _gamePresenter;
     private Stage _stage;
     @FXML
-    private Canvas _canva;
+    private Canvas _canvas;
+    @FXML
+    private Label _boatDirection;
+    @FXML
+    private Label _windSpeed;
+    @FXML
+    private Label _windDirection;
+
     private static Parent _root;
     private boolean _hasStarted;
 
@@ -49,10 +56,25 @@ public final class GameView {
     public void setPresenter(GamePresenter gamePresenter) {
         _hasStarted = false;
         _gamePresenter = gamePresenter;
+        _boatDirection.setText("");
+        _windDirection.setText("");
+        _windSpeed.setText("");
     }
 
-    public Canvas getCanva() {
-        return _canva;
+    public Canvas getCanvas() {
+        return _canvas;
+    }
+
+    public Label getBoatDirection() {
+        return _boatDirection;
+    }
+
+    public Label getWindSpeed() {
+        return _windSpeed;
+    }
+
+    public Label getWindDirection() {
+        return _windDirection;
     }
 
     public void show() {
@@ -80,7 +102,7 @@ public final class GameView {
         _gamePresenter.runGameLoop();
         Button b = (Button)event.getSource();
         b.setDisable(true);
-        _canva.requestFocus();
+        _canvas.requestFocus();
     }
 
     @FXML

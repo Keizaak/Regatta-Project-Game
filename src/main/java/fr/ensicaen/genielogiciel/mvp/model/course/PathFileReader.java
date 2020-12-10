@@ -11,10 +11,8 @@ import java.util.List;
 public class PathFileReader {
     public void loadBuoys(List<Buoy> buoys) {
         String buoysUrl = "./src/main/resources/fr/ensicaen/genielogiciel/mvp/course/buoys.txt";
-
         try (BufferedReader br = Files.newBufferedReader(Paths.get(buoysUrl))) {
             String line;
-
             while ((line = br.readLine()) != null) {
                 String[] coords = line.split("[ \n]");
                 buoys.add(new Buoy(new Vector(Integer.parseInt(coords[0]), Integer.parseInt(coords[1])),
