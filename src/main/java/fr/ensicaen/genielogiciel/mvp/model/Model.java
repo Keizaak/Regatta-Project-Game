@@ -10,11 +10,11 @@ import fr.ensicaen.genielogiciel.mvp.model.course.WeatherLoader;
 import java.io.IOException;
 
 public class Model {
-    private Path _path;
+    private final Path _path;
     private Regalata _regalata;
     private String _nickname;
     private Vector _regalataPosition;
-    private Weather _weather;
+    private final Weather _weather;
     private boolean _replayEnded;
 
     public Model() {
@@ -79,7 +79,6 @@ public class Model {
     }
 
     public boolean isGameFinished() {
-        boolean res = true;
         for (Buoy b : _path.getBuoys()) {
             if (!b.isValidated()) {
                 return false;

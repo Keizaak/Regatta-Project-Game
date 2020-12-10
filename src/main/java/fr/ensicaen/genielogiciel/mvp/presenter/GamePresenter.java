@@ -24,9 +24,11 @@ public final class GamePresenter {
     private final Model _model;
     private GameView _view;
     private GraphicsContext _context;
-    private Image _boatImage, _buoyImage;
-    private int _img_size = 50;
-    private CommandRegister _commandRegister;
+    private final Image _boatImage;
+    private final Image _buoyImage;
+    private final Image _buoyValidatedImage;
+    private final int imgSize = 50;
+    private final CommandRegister _commandRegister;
     private Timeline _timeline;
     private long _unixTimeStart;
     private long _unixTimeEnd;
@@ -40,6 +42,7 @@ public final class GamePresenter {
         _model.setNickname(nickName);
         _boatImage = new Image(GameView.class.getResource("boat.png").toString());
         _buoyImage = new Image(GameView.class.getResource("buoy.PNG").toString());
+        _buoyValidatedImage = new Image(GameView.class.getResource("buoy-green.png").toString());
         _commandRegister = new CommandRegister();
     }
 
@@ -52,7 +55,7 @@ public final class GamePresenter {
         _context = _view.getCanvas().getGraphicsContext2D();
         _model.initPosition((float)_view.getCanvas().getWidth()/2, (float)_view.getCanvas().getHeight()/2);
         Vector position = _model.getRegalataPosition();
-        _context.drawImage(_boatImage,position.x,position.y,_img_size,_img_size);
+        _context.drawImage(_boatImage,position.x,position.y, imgSize, imgSize);
     }
 
     public void runGameLoop() {
@@ -95,7 +98,7 @@ public final class GamePresenter {
             _model.replay();
             _model.initPosition((float)_view.getCanvas().getWidth()/2, (float)_view.getCanvas().getHeight()/2);
             Vector position = _model.getRegalataPosition();
-            _context.drawImage(_boatImage,position.x,position.y,_img_size,_img_size);
+            _context.drawImage(_boatImage,position.x,position.y, imgSize, imgSize);
 
             _view.getBoatDirection().setText("");
             _view.getWindSpeed().setText("");
@@ -115,11 +118,16 @@ public final class GamePresenter {
         _context.save();
         Vector position = _model.getRegalataPosition();
 
-        rotateBoatImage(_context, _model.getOrientation(),position.x + _img_size/2.,position.y + _img_size/2.);
-        _context.drawImage(_boatImage,position.x,position.y,_img_size,_img_size);
+        rotateBoatImage(_context, _model.getOrientation(),position.x + imgSize /2.,position.y + imgSize /2.);
+        _context.drawImage(_boatImage,position.x,position.y, imgSize, imgSize);
         _context.restore();
+
         for (Buoy b : _model.getPath().getBuoys()) {
-            _context.drawImage(_buoyImage,b.getPosition().x,b.getPosition().y,_img_size/3,_img_size/3);
+            if (!b.isValidated()) {
+                _context.drawImage(_buoyImage, b.getPosition().x, b.getPosition().y, imgSize / 3, imgSize / 3);
+            } else {
+                _context.drawImage(_buoyValidatedImage, b.getPosition().x, b.getPosition().y, imgSize / 3, imgSize / 3);
+            }
         }
     }
 

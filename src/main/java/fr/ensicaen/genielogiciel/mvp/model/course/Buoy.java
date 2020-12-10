@@ -32,21 +32,22 @@ public class Buoy implements Observer {
     }
 
     @Override
-    public void update( Observable o, Object arg ) {
-        Boat regatta = ((Boat) o);
-        Vector v = regatta.getPosition();
+    public void update(Observable o, Object arg) {
+        Boat regatta = (Boat) o;
+        Vector regattaPosition = regatta.getPosition();
+
         if (_position.y == _limit.y) {
-            if ((v.x > _position.x && v.x < _limit.x) || (v.x < _position.x && v.x > _limit.x)) {
-                if (abs(v.y - _position.y) < 10) {
+            if ((regattaPosition.x > _position.x && regattaPosition.x < _limit.x)
+                    || (regattaPosition.x < _position.x && regattaPosition.x > _limit.x)) {
+                if (abs(regattaPosition.y - _position.y) < 10) {
                     _isValidated = true;
-                    System.out.println("Validated !\n");
                 }
             }
         } else {
-            if ((v.y > _position.y && v.y < _limit.y) || (v.y < _position.y && v.y > _limit.y)) {
-                if (abs(v.x - _position.x) < 10) {
+            if ((regattaPosition.y > _position.y && regattaPosition.y < _limit.y)
+                    || (regattaPosition.y < _position.y && regattaPosition.y > _limit.y)) {
+                if (abs(regattaPosition.x - _position.x) < 10) {
                     _isValidated = true;
-                    System.out.println("Validated !\n");
                 }
             }
         }
