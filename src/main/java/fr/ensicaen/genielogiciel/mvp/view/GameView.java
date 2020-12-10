@@ -130,7 +130,6 @@ public final class GameView {
     @FXML
     public void onClickReplay(Event event) {
         _replayButton.setDisable(true);
-        _startButton.setDisable(false);
         _gamePresenter.replay();
     }
 

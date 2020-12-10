@@ -13,7 +13,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
@@ -61,6 +60,8 @@ public final class GamePresenter {
 
     public void runGameLoop() {
         initializeTimerForCommands();
+
+        _model.initPosition((float)_view.getCanvas().getWidth()/2, (float)_view.getCanvas().getHeight()/2);
 
         _unixTimeStart = Instant.now().getEpochSecond();
         final int FRAME_PER_SECONDS = 20;
