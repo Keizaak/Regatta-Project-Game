@@ -10,15 +10,25 @@ import fr.ensicaen.genielogiciel.mvp.model.course.WeatherLoader;
 import java.io.IOException;
 
 public class Model {
-    private final Path _path;
+    private Path _path;
     private Regalata _regalata;
     private String _nickname;
     private Vector _regalataPosition;
-    private final Weather _weather;
+    private Weather _weather;
     private boolean _replayEnded;
 
     public Model() {
         _replayEnded = false;
+
+        loadWeather();
+
+        _regalata = new Regalata(_weather.getWindDirection(),_weather.getWindSpeed());
+        _regalataPosition = _regalata.getPosition();
+
+        createPath();
+    }
+
+    private void loadWeather() {
         _weather = new Weather();
         try {
             String latitude = "49.283";
@@ -28,10 +38,9 @@ public class Model {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        _regalata = new Regalata(_weather.getWindDirection(),_weather.getWindSpeed());
-        _regalataPosition = _regalata.getPosition();
-
+    private void createPath() {
         _path = new Path();
         _path.loadPath();
         for (Buoy b : _path.getBuoys()) {

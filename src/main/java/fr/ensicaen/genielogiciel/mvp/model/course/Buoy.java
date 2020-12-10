@@ -38,14 +38,14 @@ public class Buoy implements Observer {
         Vector regattaPosition = regatta.getPosition();
 
         if (boatIsInTheVerticalValidationZone(regattaPosition)
-        || boatIsInTheHorizontalValidationZone(regattaPosition)) {
+                || boatIsInTheHorizontalValidationZone(regattaPosition)) {
             _isValidated = true;
         }
     }
 
     private boolean boatIsInTheHorizontalValidationZone(Vector regattaPosition) {
         return (_position.x == _limit.x) && ((regattaPosition.y > _position.y && regattaPosition.y < _limit.y)
-                    || (regattaPosition.y < _position.y && regattaPosition.y > _limit.y))
+                || (regattaPosition.y < _position.y && regattaPosition.y > _limit.y))
                 && (abs(regattaPosition.x - _position.x) < VALIDATION_ZONE_WIDTH);
     }
 

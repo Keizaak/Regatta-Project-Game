@@ -43,12 +43,7 @@ public class CommandRegister {
 
         Command finalCommand = null;
         for (Command c : _commandHistory) {
-            try {
-                Thread.sleep(c.getTime() - previousTime);
-                previousTime = c.getTime();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            previousTime = sleep(previousTime, c);
 
             c.execute();
             finalCommand = c;
@@ -56,6 +51,16 @@ public class CommandRegister {
         if (finalCommand != null) {
             finalCommand.getModel().setReplayEnded(true);
         }
+    }
+
+    private long sleep(long previousTime, Command c) {
+        try {
+            Thread.sleep(c.getTime() - previousTime);
+            previousTime = c.getTime();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return previousTime;
     }
 
     public void writeCommands(List<Command> commands) throws IOException{

@@ -16,11 +16,13 @@ public class Weather {
 
     public void loadWindInfo(String json) {
         JSONObject jObject  = new JSONObject(json);
-        JSONObject city_info = jObject.getJSONObject("city_info");
+        JSONObject cityInfo = jObject.getJSONObject("city_info");
         JSONObject condition = jObject.getJSONObject("current_condition");
-        _latitude = city_info.getDouble("latitude");
-        _longitude = city_info.getDouble("longitude");
+
+        _latitude = cityInfo.getDouble("latitude");
+        _longitude = cityInfo.getDouble("longitude");
         _windSpeed = condition.getFloat("wnd_spd");
+
         switch(condition.getString("wnd_dir")) {
             case "N":
                 _windDirection = Cap.NORTH;

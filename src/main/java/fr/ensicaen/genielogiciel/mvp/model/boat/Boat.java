@@ -67,7 +67,6 @@ public abstract class Boat extends Observable {
                     addValueToOrientation(-0.2f);
                 } else if (_windDirection == Cap.WEST) {
                     addValueToOrientation(0.2f);
-
                 }
                 break;
             case EAST:
@@ -102,12 +101,18 @@ public abstract class Boat extends Observable {
     }
 
     public Vector getVectorDirection(Cap cap) {
-        return switch (cap) {
-            case NORTH -> new Vector(0, -1);
-            case EAST -> new Vector(1, 0);
-            case SOUTH -> new Vector(0, 1);
-            case WEST -> new Vector(-1, 0);
-        };
+        switch (cap) {
+            case NORTH:
+                return new Vector(0, -1);
+            case EAST:
+                return new Vector(1, 0);
+            case SOUTH:
+                return new Vector(0, 1);
+            case WEST:
+                return new Vector(-1, 0);
+            default:
+                return new Vector();
+        }
     }
 
     public void changeDirection() {

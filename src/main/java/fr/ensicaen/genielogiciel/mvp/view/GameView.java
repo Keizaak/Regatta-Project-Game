@@ -3,7 +3,6 @@ package fr.ensicaen.genielogiciel.mvp.view;
 import fr.ensicaen.genielogiciel.mvp.LoginMain;
 import fr.ensicaen.genielogiciel.mvp.presenter.GamePresenter;
 import fr.ensicaen.genielogiciel.mvp.presenter.LoginPresenter;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -43,11 +42,13 @@ public final class GameView {
         Parent _root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
+
         Scene scene = new Scene(_root, 800, 600);
         Stage stage = new Stage();
         stage.setTitle(ResourceBundle.getBundle("fr.ensicaen.genielogiciel.mvp.MessageBundle").getString("project.title"));
         stage.setScene(scene);
         stage.getIcons().add(new Image(GameView.class.getResource("boat.png").toString()));
+
         view._stage = stage;
         _root.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.UP) {
@@ -100,7 +101,7 @@ public final class GameView {
     }
 
     @FXML
-    private void onClickStart(Event event) {
+    private void onClickStart() {
         _hasStarted = true;
         _gamePresenter.runGameLoop();
         _startButton.setDisable(true);
@@ -128,7 +129,7 @@ public final class GameView {
     }
 
     @FXML
-    public void onClickReplay(Event event) {
+    public void onClickReplay() {
         _replayButton.setDisable(true);
         _gamePresenter.replay();
     }
