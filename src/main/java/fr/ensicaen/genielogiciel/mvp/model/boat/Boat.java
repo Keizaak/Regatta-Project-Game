@@ -25,12 +25,20 @@ public abstract class Boat extends Observable {
         return _position;
     }
 
+    public void setPosition(Vector position) {
+        _position = position;
+    }
+
     public float getOrientation() {
         return _orientation;
     }
 
-    public void setPosition(Vector position) {
-        _position = position;
+    void setOrientation(float orientation) {
+        _orientation = orientation;
+    }
+    
+    Cap getDirection() {
+        return _direction;
     }
 
     /* TODO: optimize... */
@@ -82,7 +90,7 @@ public abstract class Boat extends Observable {
         }
     }
 
-    public Vector getDirection(Cap cap) {
+    public Vector getVectorDirection(Cap cap) {
         switch (cap) {
             case NORTH:
                 return new Vector(0, -1);
@@ -117,7 +125,7 @@ public abstract class Boat extends Observable {
         }
     }
 
-    private void addValueToOrientation(float value) {
+    void addValueToOrientation(float value) {
         _orientation = (_orientation + value) % 360;
     }
 
