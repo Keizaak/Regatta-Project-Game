@@ -113,6 +113,8 @@ public final class GamePresenter {
         _view.getWindDirection().setText("");
 
         displayAlert();
+
+        _view.enableReplay();
     }
 
     private void displayAlert() {

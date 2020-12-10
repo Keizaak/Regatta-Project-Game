@@ -13,8 +13,8 @@
    <children>
       <ButtonBar prefHeight="40.0" prefWidth="800.0" styleClass="menu">
         <buttons>
-            <Button mnemonicParsing="false" onAction="#onClickStart" text="%game.start" />
-            <Button mnemonicParsing="false" onAction="#onClickReplay" text="%game.replay" />
+            <Button fx:id="_startButton" mnemonicParsing="false" onAction="#onClickStart" text="%game.start" />
+            <Button fx:id="_replayButton" mnemonicParsing="false" onAction="#onClickReplay" text="%game.replay" disable="true" />
             <Button mnemonicParsing="false" onAction="#onClickMenu" text="%game.menu" />
         </buttons>
       </ButtonBar>

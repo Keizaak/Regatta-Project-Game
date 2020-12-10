@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 
 public final class GameView {
     private GamePresenter _gamePresenter;
+
     private Stage _stage;
     @FXML
     private Canvas _canvas;
@@ -30,6 +31,10 @@ public final class GameView {
     private Label _windSpeed;
     @FXML
     private Label _windDirection;
+    @FXML
+    public Button _startButton;
+    @FXML
+    public Button _replayButton;
 
     private boolean _hasStarted;
 
@@ -98,8 +103,8 @@ public final class GameView {
     private void onClickStart(Event event) {
         _hasStarted = true;
         _gamePresenter.runGameLoop();
-        Button b = (Button)event.getSource();
-        b.setDisable(true);
+        _startButton.setDisable(true);
+        _replayButton.setDisable(true);
         _canvas.requestFocus();
     }
 
@@ -124,8 +129,12 @@ public final class GameView {
 
     @FXML
     public void onClickReplay(Event event) {
-        Button b = (Button)event.getSource();
-        b.setDisable(true);
+        _replayButton.setDisable(true);
+        _startButton.setDisable(false);
         _gamePresenter.replay();
+    }
+
+    public void enableReplay() {
+        _replayButton.setDisable(false);
     }
 }
