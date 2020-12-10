@@ -48,6 +48,8 @@ public final class GamePresenter {
         }));
         _timeline.setCycleCount(Animation.INDEFINITE);
         _timeline.play();
+
+        //_commandRegister.replay(_model); /// REJOUER SI BOUTON REPLAY
     }
 
     public Timeline getTimeline() {
@@ -57,6 +59,7 @@ public final class GamePresenter {
     private void update() {
         // Update the model
         _model.movingForward();
+        _commandRegister.saveGame(); /// SAUVER POUR REJOUER PLUS TARD
     }
 
     private void render() {
