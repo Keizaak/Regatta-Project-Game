@@ -39,12 +39,14 @@ public class Buoy implements Observer {
             if ((v.x > _position.x && v.x < _limit.x) || (v.x < _position.x && v.x > _limit.x)) {
                 if (abs(v.y - _position.y) < 10) {
                     _isValidated = true;
+                    System.out.println("Validated !\n");
                 }
             }
         } else {
             if ((v.y > _position.y && v.y < _limit.y) || (v.y < _position.y && v.y > _limit.y)) {
                 if (abs(v.x - _position.x) < 10) {
                     _isValidated = true;
+                    System.out.println("Validated !\n");
                 }
             }
         }
