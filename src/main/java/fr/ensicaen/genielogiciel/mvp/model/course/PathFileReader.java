@@ -17,7 +17,8 @@ public class PathFileReader {
 
             while ((line = br.readLine()) != null) {
                 String[] coords = line.split("[ \n]");
-                buoys.add(new Buoy(new Vector(Integer.parseInt(coords[0]), Integer.parseInt(coords[1]))));
+                buoys.add(new Buoy(new Vector(Integer.parseInt(coords[0]), Integer.parseInt(coords[1])),
+                        new Vector(Integer.parseInt(coords[2]), Integer.parseInt(coords[3]))));
             }
         } catch (IOException e) {
             e.printStackTrace();

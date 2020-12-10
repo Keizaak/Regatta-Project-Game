@@ -7,9 +7,11 @@ import java.util.Observer;
 
 public class Buoy implements Observer {
     private final Vector _position;
+    private final Vector _limit;
 
-    public Buoy(Vector position) {
+    public Buoy(Vector position, Vector limit) {
         _position = position;
+        _limit = limit;
     }
 
     public Vector getPosition() {
