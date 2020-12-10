@@ -13,10 +13,18 @@ public class Buoy implements Observer {
     private final Vector _limit;
     private boolean _isValidated;
 
-    public Buoy(Vector position, Vector limit) {
+    public Buoy( Vector position, Vector limit ) {
         _position = position;
         _limit = limit;
         _isValidated = false;
+    }
+
+    public boolean isValidated() {
+        return _isValidated;
+    }
+
+    public void setValidated( boolean bool ) {
+        _isValidated = bool;
     }
 
     public Vector getPosition() {
@@ -24,8 +32,8 @@ public class Buoy implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-        Boat regatta = ((Boat)o);
+    public void update( Observable o, Object arg ) {
+        Boat regatta = ((Boat) o);
         Vector v = regatta.getPosition();
         if (_position.y == _limit.y) {
             if ((v.x > _position.x && v.x < _limit.x) || (v.x < _position.x && v.x > _limit.x)) {
@@ -33,8 +41,7 @@ public class Buoy implements Observer {
                     _isValidated = true;
                 }
             }
-        }
-        else {
+        } else {
             if ((v.y > _position.y && v.y < _limit.y) || (v.y < _position.y && v.y > _limit.y)) {
                 if (abs(v.x - _position.x) < 10) {
                     _isValidated = true;

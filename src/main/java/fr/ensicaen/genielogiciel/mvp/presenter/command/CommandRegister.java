@@ -38,7 +38,6 @@ public class CommandRegister implements CommandFileWriter, CommandFileReader {
 
     public void replay(Model model) {
         loadGame(model);
-
         new Thread(this::executeAllCommands).start();
     }
 
@@ -47,7 +46,7 @@ public class CommandRegister implements CommandFileWriter, CommandFileReader {
         if (!_commandHistory.isEmpty()) {
             previousTime = _commandHistory.get(0).getTime();
         }
-
+        Command finale = null;
         for (Command c : _commandHistory) {
             try {
                 Thread.sleep(c.getTime() - previousTime);
@@ -56,6 +55,10 @@ public class CommandRegister implements CommandFileWriter, CommandFileReader {
                 e.printStackTrace();
             }
             c.execute();
+            finale = c;
+        }
+        if (finale != null) {
+            finale.getModel().setReplayEnded(true);
         }
     }
 

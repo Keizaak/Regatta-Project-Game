@@ -33,15 +33,14 @@ public abstract class Boat extends Observable {
         return _orientation;
     }
 
-    void setOrientation(float orientation) {
+    public void setOrientation(float orientation) {
         _orientation = orientation;
     }
-    
-    Cap getDirection() {
+
+    public Cap getDirection() {
         return _direction;
     }
 
-    /* TODO: optimize... */
     public void windAction() {
         if (_windDirection == _direction) {
             if (!_isFaster) {
@@ -148,6 +147,7 @@ public abstract class Boat extends Observable {
     public void changePosition() {
         _position.x += Math.cos(Math.PI/180 * _orientation) * _windSpeed;
         _position.y += Math.sin(Math.PI/180 * _orientation) * _windSpeed;
+        setPositionForBuoy(_position);
     }
 
     public void setPositionForBuoy(Vector position) {
