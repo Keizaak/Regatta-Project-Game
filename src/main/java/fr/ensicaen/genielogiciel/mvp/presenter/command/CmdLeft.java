@@ -6,6 +6,9 @@ public class CmdLeft extends Command {
     public CmdLeft(Model model) {
         super(model);
     }
+    public CmdLeft(Model model, long time) {
+        super(model, time);
+    }
 
     @Override
     public void execute() {

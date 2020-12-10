@@ -1,69 +1,90 @@
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
-fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight 
+CmdLeft 1607598113126
+CmdLeft 1607598113638
+CmdLeft 1607598113669
+CmdLeft 1607598113701
+CmdLeft 1607598113733
+CmdLeft 1607598113764
+CmdLeft 1607598113798
+CmdLeft 1607598113829
+CmdLeft 1607598113861
+CmdLeft 1607598113892
+CmdLeft 1607598113939
+CmdLeft 1607598113971
+CmdLeft 1607598114001
+CmdLeft 1607598114033
+CmdRight 1607598114356
+CmdRight 1607598114867
+CmdRight 1607598114898
+CmdRight 1607598114929
+CmdRight 1607598114960
+CmdRight 1607598114990
+CmdRight 1607598115023
+CmdRight 1607598115069
+CmdRight 1607598115100
+CmdRight 1607598115132
+CmdRight 1607598115163
+CmdRight 1607598115196
+CmdRight 1607598115225
+CmdRight 1607598115258
+CmdRight 1607598115288
+CmdRight 1607598115831
+CmdRight 1607598117042
+CmdRight 1607598117581
+CmdRight 1607598117861
+CmdLeft 1607598118462
+CmdLeft 1607598118952
+CmdRight 1607598119352
+CmdRight 1607598119852
+CmdRight 1607598119901
+CmdRight 1607598119932
+CmdRight 1607598119963
+CmdRight 1607598119995
+CmdRight 1607598120026
+CmdRight 1607598120058
+CmdRight 1607598120089
+CmdRight 1607598120121
+CmdRight 1607598120776
+CmdRight 1607598121288
+CmdRight 1607598121320
+CmdRight 1607598121351
+CmdRight 1607598121384
+CmdRight 1607598121415
+CmdRight 1607598121446
+CmdRight 1607598121478
+CmdRight 1607598121510
+CmdRight 1607598121541
+CmdRight 1607598121587
+CmdRight 1607598121618
+CmdRight 1607598121649
+CmdRight 1607598121679
+CmdRight 1607598121709
+CmdRight 1607598121740
+CmdRight 1607598121771
+CmdRight 1607598121819
+CmdRight 1607598122162
+CmdRight 1607598122392
+CmdRight 1607598122687
+CmdRight 1607598123110
+CmdLeft 1607598124076
+CmdLeft 1607598124589
+CmdLeft 1607598125416
+CmdRight 1607598125879
+CmdRight 1607598126387
+CmdRight 1607598126419
+CmdRight 1607598126451
+CmdRight 1607598126483
+CmdRight 1607598126514
+CmdRight 1607598126546
+CmdRight 1607598126578
+CmdRight 1607598126624
+CmdRight 1607598126654
+CmdRight 1607598126686
+CmdRight 1607598126718
+CmdRight 1607598126749
+CmdRight 1607598126780
+CmdRight 1607598126812
+CmdRight 1607598126843
+CmdRight 1607598126875
+CmdRight 1607598127594
+CmdRight 1607598127812
+CmdRight 1607598128013
