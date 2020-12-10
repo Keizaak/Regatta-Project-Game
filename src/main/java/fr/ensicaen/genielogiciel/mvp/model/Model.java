@@ -82,7 +82,7 @@ public class Model {
 
     public boolean isGameFinished() {
         for (Buoy b : _path.getBuoys()) {
-            if (!b.isValidated()) {
+            if (b.isNotValidated()) {
                 return false;
             }
         }

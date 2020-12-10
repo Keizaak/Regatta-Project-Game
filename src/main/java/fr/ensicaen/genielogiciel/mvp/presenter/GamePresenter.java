@@ -122,7 +122,7 @@ public final class GamePresenter {
         _context.restore();
 
         for (Buoy b : _model.getPath().getBuoys()) {
-            if (!b.isValidated()) {
+            if (b.isNotValidated()) {
                 _context.drawImage(_buoyImage, b.getPosition().x, b.getPosition().y, (int)(imgSize / (float)3), (int)(imgSize / (float)3));
             } else {
                 _context.drawImage(_buoyValidatedImage, b.getPosition().x, b.getPosition().y, (int)(imgSize / (float)3), (int)(imgSize / (float)3));
