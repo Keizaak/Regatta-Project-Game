@@ -8,7 +8,7 @@ public abstract class Boat extends Observable {
     private Vector _position;
     private Cap _direction;
     private float _orientation;
-    private Cap _windDirection;
+    private final Cap _windDirection;
     private float _windSpeed;
     private boolean _isFaster;
 
@@ -43,65 +43,71 @@ public abstract class Boat extends Observable {
 
     public void windAction() {
         if (_windDirection == _direction) {
-            if (!_isFaster) {
-                _windSpeed *= 1.5;
-                _isFaster = true;
-            }
+            accelerateBoat();
         } else if ((_windDirection == Cap.NORTH && _direction == Cap.SOUTH) || (_windDirection == Cap.SOUTH && _direction == Cap.NORTH)
                 || (_windDirection == Cap.WEST && _direction == Cap.EAST) || (_windDirection == Cap.EAST && _direction == Cap.WEST))
         {
-            if (_isFaster) {
-                _windSpeed /= 1.5;
-                _isFaster = false;
-            }
+            decelerateBoat();
         } else {
-            switch (_direction) {
-                case NORTH:
-                    if (_windDirection == Cap.EAST) {
-                        addValueToOrientation(0.2f);
-                    } else if (_windDirection == Cap.WEST) {
-                        addValueToOrientation(-0.2f);
-                    }
-                    break;
-                case SOUTH:
-                    if (_windDirection == Cap.EAST) {
-                        addValueToOrientation(-0.2f);
-                    } else if (_windDirection == Cap.WEST) {
-                        addValueToOrientation(0.2f);
+            pushBoatInWindDirection();
+        }
+    }
 
-                    }
-                    break;
-                case EAST:
-                    if (_windDirection == Cap.SOUTH) {
-                        addValueToOrientation(0.2f);
-                    } else if (_windDirection == Cap.NORTH){
-                        addValueToOrientation(-0.2f);
-                    }
-                    break;
-                case WEST:
-                    if (_windDirection == Cap.SOUTH) {
-                        addValueToOrientation(-0.2f);
-                    } else if (_windDirection == Cap.NORTH) {
-                        addValueToOrientation(0.2f);
-                    }
-                    break;
-            }
+    private void pushBoatInWindDirection() {
+        switch (_direction) {
+            case NORTH:
+                if (_windDirection == Cap.EAST) {
+                    addValueToOrientation(0.2f);
+                } else if (_windDirection == Cap.WEST) {
+                    addValueToOrientation(-0.2f);
+                }
+                break;
+            case SOUTH:
+                if (_windDirection == Cap.EAST) {
+                    addValueToOrientation(-0.2f);
+                } else if (_windDirection == Cap.WEST) {
+                    addValueToOrientation(0.2f);
+
+                }
+                break;
+            case EAST:
+                if (_windDirection == Cap.SOUTH) {
+                    addValueToOrientation(0.2f);
+                } else if (_windDirection == Cap.NORTH){
+                    addValueToOrientation(-0.2f);
+                }
+                break;
+            case WEST:
+                if (_windDirection == Cap.SOUTH) {
+                    addValueToOrientation(-0.2f);
+                } else if (_windDirection == Cap.NORTH) {
+                    addValueToOrientation(0.2f);
+                }
+                break;
+        }
+    }
+
+    private void decelerateBoat() {
+        if (_isFaster) {
+            _windSpeed /= 1.5;
+            _isFaster = false;
+        }
+    }
+
+    private void accelerateBoat() {
+        if (!_isFaster) {
+            _windSpeed *= 1.5;
+            _isFaster = true;
         }
     }
 
     public Vector getVectorDirection(Cap cap) {
-        switch (cap) {
-            case NORTH:
-                return new Vector(0, -1);
-            case EAST:
-                return new Vector(1, 0);
-            case SOUTH:
-                return new Vector(0, 1);
-            case WEST:
-                return new Vector(-1, 0);
-            default:
-                return new Vector();
-        }
+        return switch (cap) {
+            case NORTH -> new Vector(0, -1);
+            case EAST -> new Vector(1, 0);
+            case SOUTH -> new Vector(0, 1);
+            case WEST -> new Vector(-1, 0);
+        };
     }
 
     public void changeDirection() {

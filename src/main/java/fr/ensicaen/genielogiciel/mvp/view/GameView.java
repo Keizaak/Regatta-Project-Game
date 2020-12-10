@@ -42,7 +42,7 @@ public final class GameView {
         Stage stage = new Stage();
         stage.setTitle(ResourceBundle.getBundle("fr.ensicaen.genielogiciel.mvp.MessageBundle").getString("project.title"));
         stage.setScene(scene);
-        stage.getIcons().add(new Image(GameView.class.getResource("boat.png").toString()));///
+        stage.getIcons().add(new Image(GameView.class.getResource("boat.png").toString()));
         view._stage = stage;
         _root.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.UP) {
