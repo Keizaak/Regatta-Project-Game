@@ -57,7 +57,6 @@ public final class GamePresenter {
     private void update() {
         // Update the model
         _model.movingForward();
-
     }
 
     private void render() {

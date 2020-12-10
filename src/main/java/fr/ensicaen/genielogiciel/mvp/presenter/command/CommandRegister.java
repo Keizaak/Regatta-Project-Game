@@ -3,7 +3,7 @@ package fr.ensicaen.genielogiciel.mvp.presenter.command;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandRegister {
+public class CommandRegister extends CommandFileWriter {
     private List<Command> _commandHistory;
 
     public CommandRegister() {
@@ -12,5 +12,9 @@ public class CommandRegister {
 
     public void addCommand(Command c) {
         _commandHistory.add(c);
+    }
+
+    public void saveGame() {
+        writeCommands(_commandHistory);
     }
 }
