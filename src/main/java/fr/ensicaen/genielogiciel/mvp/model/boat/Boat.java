@@ -12,20 +12,13 @@ public abstract class Boat extends Observable {
     private float _windSpeed;
     private boolean _isFaster;
 
-    /* TODO: get wind direction and speed from JSON (it's fixed for the moment) */
-    protected Boat() {
+    protected Boat(Cap windDirection, float windSpeed) {
         _position = new Vector();
         _direction = Cap.NORTH;
         _orientation = 270;
-        _windDirection = Cap.SOUTH;
-        _windSpeed = 0.80f;
+        _windDirection = windDirection;
+        _windSpeed = windSpeed / 50f;
         _isFaster = false;
-    }
-
-    protected Boat(Cap cap, float speed) {
-        super();
-        _windDirection = cap;
-        _windSpeed = speed;
     }
 
     public Vector getPosition() {
@@ -124,7 +117,7 @@ public abstract class Boat extends Observable {
         }
     }
 
-    public void addValueToOrientation(float value) {
+    private void addValueToOrientation(float value) {
         _orientation = (_orientation + value) % 360;
     }
 
