@@ -59,9 +59,7 @@ public final class GamePresenter {
     }
 
     public void runGameLoop() {
-        //Ces 2 commandes permettent d'initialiser les timer du replay
-        boatLeft();
-        boatRight();
+        initializeTimerForCommands();
 
         _unixTimeStart = Instant.now().getEpochSecond();
         final int FRAME_PER_SECONDS = 20;
@@ -71,6 +69,11 @@ public final class GamePresenter {
         }));
         _timeline.setCycleCount(Animation.INDEFINITE);
         _timeline.play();
+    }
+
+    private void initializeTimerForCommands() {
+        boatLeft();
+        boatRight();
     }
 
     public Timeline getTimeline() {
@@ -90,26 +93,35 @@ public final class GamePresenter {
         }
 
         if (_model.isGameFinished()) {
-            _timeline.stop();
-            _commandRegister.saveGame();
-            _unixTimeEnd = Instant.now().getEpochSecond();
-
-            _model.replay();
-            _model.initPosition((float)_view.getCanvas().getWidth()/2, (float)_view.getCanvas().getHeight()/2);
-            Vector position = _model.getRegalataPosition();
-            _context.drawImage(_boatImage,position.x,position.y, imgSize, imgSize);
-
-            _view.getBoatDirection().setText("");
-            _view.getWindSpeed().setText("");
-            _view.getWindDirection().setText("");
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setTitle(ResourceBundle.getBundle("fr.ensicaen.genielogiciel.mvp.MessageBundle").getString("winning.title"));
-            long timeTaken = _unixTimeEnd-_unixTimeStart;
-            alert.setContentText(ResourceBundle.getBundle("fr.ensicaen.genielogiciel.mvp.MessageBundle").getString("winning.content") + timeTaken);
-            alert.show();
+            gameFinished();
         }
+    }
+
+    private void gameFinished() {
+        _timeline.stop();
+        _commandRegister.saveGame();
+        _unixTimeEnd = Instant.now().getEpochSecond();
+
+        _model.replay();
+        _model.initPosition((float)_view.getCanvas().getWidth()/2, (float)_view.getCanvas().getHeight()/2);
+        Vector position = _model.getRegalataPosition();
+        _context.drawImage(_boatImage,position.x,position.y, imgSize, imgSize);
+
+        _view.getBoatDirection().setText("");
+        _view.getWindSpeed().setText("");
+        _view.getWindDirection().setText("");
+
+        displayAlert();
+    }
+
+    private void displayAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle(ResourceBundle.getBundle("fr.ensicaen.genielogiciel.mvp.MessageBundle").getString("winning.title"));
+        long timeTaken = _unixTimeEnd-_unixTimeStart;
+        alert.setContentText(ResourceBundle.getBundle("fr.ensicaen.genielogiciel.mvp.MessageBundle").getString("winning.content")
+                + timeTaken);
+        alert.show();
     }
 
     private void render() {
@@ -121,17 +133,23 @@ public final class GamePresenter {
         _context.drawImage(_boatImage,position.x,position.y, imgSize, imgSize);
         _context.restore();
 
+        drawBuoys();
+    }
+
+    private void drawBuoys() {
         for (Buoy b : _model.getPath().getBuoys()) {
             if (b.isNotValidated()) {
-                _context.drawImage(_buoyImage, b.getPosition().x, b.getPosition().y, (int)(imgSize / (float)3), (int)(imgSize / (float)3));
+                _context.drawImage(_buoyImage, b.getPosition().x, b.getPosition().y,
+                        (int)(imgSize / (float)3), (int)(imgSize / (float)3));
             } else {
-                _context.drawImage(_buoyValidatedImage, b.getPosition().x, b.getPosition().y, (int)(imgSize / (float)3), (int)(imgSize / (float)3));
+                _context.drawImage(_buoyValidatedImage, b.getPosition().x, b.getPosition().y,
+                        (int)(imgSize / (float)3), (int)(imgSize / (float)3));
             }
         }
     }
 
     private void rotateBoatImage(GraphicsContext gc, double angle, double px, double py) {
-        Rotate r = new Rotate(((angle+90)%360), px, py);
+        Rotate r = new Rotate(((angle + 90) % 360), px, py);
         gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
     }
 

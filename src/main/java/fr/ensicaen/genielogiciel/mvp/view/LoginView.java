@@ -27,8 +27,7 @@ public class LoginView {
     public static LoginView createView(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(LoginView.class.getResource("LoginDialog.fxml"), LoginMain.getMessageBundle());
         Parent root = loader.load();
-        // getController() does not return a presenter but actually a class of the View,
-        // if we want the presenter independent from the API JavaFX.
+
         LoginView view = loader.getController();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

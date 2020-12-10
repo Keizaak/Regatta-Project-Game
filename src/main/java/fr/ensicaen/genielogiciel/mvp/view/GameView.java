@@ -31,12 +31,11 @@ public final class GameView {
     @FXML
     private Label _windDirection;
 
-    private static Parent _root;
     private boolean _hasStarted;
 
     public static GameView createView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("SpotMap.fxml"), LoginMain.getMessageBundle());
-        _root = fxmlLoader.load();
+        Parent _root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
         Scene scene = new Scene(_root, 800, 600);
@@ -85,9 +84,6 @@ public final class GameView {
 
     @FXML
     private void onKeyPressed(KeyCode code) {
-//        if (code == KeyCode.SPACE) {
-//            _gamePresenter.runGameLoop();
-//        }
         if (_hasStarted && !_gamePresenter.isReplay()) {
             if (code == KeyCode.D || code == KeyCode.RIGHT) {
                 _gamePresenter.boatRight();
@@ -108,7 +104,7 @@ public final class GameView {
     }
 
     @FXML
-    private void onClickMenu(Event event) throws IOException {
+    private void onClickMenu() throws IOException {
         if (_gamePresenter.getTimeline() != null) {
             _gamePresenter.getTimeline().stop();
         }
@@ -116,7 +112,7 @@ public final class GameView {
         FXMLLoader loader = new FXMLLoader(LoginView.class.getResource("LoginDialog.fxml"), LoginMain.getMessageBundle());
         Parent root = loader.load();
         LoginView view = loader.getController();
-        Scene scene = new Scene(root); //, 400, 120);
+        Scene scene = new Scene(root);
 
         LoginView loginView = LoginView.createView(_stage);
         LoginPresenter presenter = new LoginPresenter();
@@ -128,7 +124,8 @@ public final class GameView {
 
     @FXML
     public void onClickReplay(Event event) {
+        Button b = (Button)event.getSource();
+        b.setDisable(true);
         _gamePresenter.replay();
     }
-
 }
