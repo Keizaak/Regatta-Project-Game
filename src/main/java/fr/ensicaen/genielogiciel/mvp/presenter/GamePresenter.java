@@ -78,7 +78,6 @@ public final class GamePresenter {
     }
 
     private void update() {
-        // Update the model
         _model.movingForward();
         if (!isReplay()) {
             _view.getBoatDirection().setText(_model.getBoatDirection().toString());
@@ -124,9 +123,9 @@ public final class GamePresenter {
 
         for (Buoy b : _model.getPath().getBuoys()) {
             if (!b.isValidated()) {
-                _context.drawImage(_buoyImage, b.getPosition().x, b.getPosition().y, imgSize / 3, imgSize / 3);
+                _context.drawImage(_buoyImage, b.getPosition().x, b.getPosition().y, (int)(imgSize / (float)3), (int)(imgSize / (float)3));
             } else {
-                _context.drawImage(_buoyValidatedImage, b.getPosition().x, b.getPosition().y, imgSize / 3, imgSize / 3);
+                _context.drawImage(_buoyValidatedImage, b.getPosition().x, b.getPosition().y, (int)(imgSize / (float)3), (int)(imgSize / (float)3));
             }
         }
     }

@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -42,6 +43,7 @@ public final class GameView {
         Stage stage = new Stage();
         stage.setTitle(ResourceBundle.getBundle("fr.ensicaen.genielogiciel.mvp.MessageBundle").getString("project.title"));
         stage.setScene(scene);
+        stage.getIcons().add(new Image(GameView.class.getResource("boat.png").toString()));///
         view._stage = stage;
         _root.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.UP) {
@@ -107,7 +109,9 @@ public final class GameView {
 
     @FXML
     private void onClickMenu(Event event) throws IOException {
-        _gamePresenter.getTimeline().stop();
+        if (_gamePresenter.getTimeline() != null) {
+            _gamePresenter.getTimeline().stop();
+        }
 
         FXMLLoader loader = new FXMLLoader(LoginView.class.getResource("LoginDialog.fxml"), LoginMain.getMessageBundle());
         Parent root = loader.load();

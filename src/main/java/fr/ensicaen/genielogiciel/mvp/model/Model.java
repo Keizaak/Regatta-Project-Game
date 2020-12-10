@@ -21,7 +21,9 @@ public class Model {
         _replayEnded = false;
         _weather = new Weather();
         try {
-            String json_data = WeatherLoader.loadWeatherInfo("49.283", "-0.25");
+            String latitude = "49.283";
+            String longitude = "-0.25";
+            String json_data = WeatherLoader.loadWeatherInfo(latitude, longitude);
             _weather.loadWindInfo(json_data);
         } catch (IOException e) {
             e.printStackTrace();

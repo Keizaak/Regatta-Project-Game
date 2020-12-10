@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class LoginView {
         // getController() does not return a presenter but actually a class of the View,
         // if we want the presenter independent from the API JavaFX.
         LoginView view = loader.getController();
-        Scene scene = new Scene(root); //, 400, 120);
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         view._stage = primaryStage;
         return view;
