@@ -1,7 +1,7 @@
 package fr.ensicaen.genielogiciel.mvp.presenter;
 
 import fr.ensicaen.genielogiciel.mvp.model.Model;
-import fr.ensicaen.genielogiciel.mvp.model.boat.Vector;
+import fr.ensicaen.genielogiciel.mvp.model.Vector;
 import fr.ensicaen.genielogiciel.mvp.presenter.command.CmdLeft;
 import fr.ensicaen.genielogiciel.mvp.presenter.command.CmdRight;
 import fr.ensicaen.genielogiciel.mvp.presenter.command.Command;
