@@ -1,6 +1,5 @@
 package fr.ensicaen.genielogiciel.mvp.model.course;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,5 +13,9 @@ public class Path {
     public void loadPath() {
         _buoys.clear();
         new PathFileReader().loadBuoys(_buoys);
+    }
+
+    public List<Buoy> getBuoys() {
+        return _buoys;
     }
 }
