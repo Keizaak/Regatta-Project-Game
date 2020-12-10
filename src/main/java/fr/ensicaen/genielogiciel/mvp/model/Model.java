@@ -2,9 +2,10 @@ package fr.ensicaen.genielogiciel.mvp.model;
 
 import fr.ensicaen.genielogiciel.mvp.model.boat.Boat;
 import fr.ensicaen.genielogiciel.mvp.model.boat.Regalata;
-import fr.ensicaen.genielogiciel.mvp.model.course.Course;
+import fr.ensicaen.genielogiciel.mvp.model.course.Path;
 
 public class Model {
+    private Path _path;
     private Regalata _regalata;
     private String _nickname;
     private Vector _regalataPosition;
@@ -13,7 +14,7 @@ public class Model {
         _regalata = new Regalata();
         _regalataPosition = _regalata.getPosition();
 
-        new Course(); //// A CHANGER
+        _path = new Path();
     }
 
     public String getNickname() {
