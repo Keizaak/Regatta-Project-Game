@@ -2,7 +2,6 @@ package fr.ensicaen.genielogiciel.mvp.model;
 
 import fr.ensicaen.genielogiciel.mvp.model.boat.Boat;
 import fr.ensicaen.genielogiciel.mvp.model.boat.Regalata;
-import fr.ensicaen.genielogiciel.mvp.model.boat.Vector;
 import fr.ensicaen.genielogiciel.mvp.model.course.Course;
 
 public class Model {

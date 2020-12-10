@@ -1,5 +1,7 @@
 package fr.ensicaen.genielogiciel.mvp.model.boat;
 
+import fr.ensicaen.genielogiciel.mvp.model.Vector;
+
 import java.util.Observable;
 
 public abstract class Boat extends Observable {
