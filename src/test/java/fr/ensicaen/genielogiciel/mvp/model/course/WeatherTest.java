@@ -9,10 +9,6 @@ import static org.junit.Assert.*;
 
 
 public class WeatherTest {
-    private String _latitude = "49.283";
-    private String _longitude = "-0.25";
-    private String _url = "https://www.prevision-meteo.ch/services/json/lat=" + _latitude + "lng=" + _longitude;
-
     @Test
     public void loadWeatherInfo() {
         Weather weather = new Weather();
@@ -20,7 +16,9 @@ public class WeatherTest {
         float wind_speed;
         Cap wind_direction;
         try {
-            json_data = WeatherLoader.loadWeatherInfo(_latitude, _longitude);
+            String latitude = "49.283";
+            String longitude = "-0.25";
+            json_data = WeatherLoader.loadWeatherInfo(latitude, longitude);
             wind_speed = weather.getWindSpeed();
             wind_direction = weather.getWindDirection();
             weather.loadWindInfo(json_data);

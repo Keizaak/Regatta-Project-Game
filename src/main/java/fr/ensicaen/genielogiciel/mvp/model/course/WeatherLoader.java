@@ -13,8 +13,9 @@ public class WeatherLoader {
         StringBuilder content = new StringBuilder();
         int status;
         String url = "https://www.prevision-meteo.ch/services/json/lat=" + latitude + "lng=" + longitude;
-        URL request_url = new URL(url);
-        HttpURLConnection con = (HttpURLConnection)request_url.openConnection();
+        URL requestURL = new URL(url);
+        HttpURLConnection con = (HttpURLConnection)requestURL.openConnection();
+
         con.setRequestMethod("GET");
         con.setRequestProperty("Content-Type", "application/json; utf-8");
         con.setRequestProperty("Accept", "application/json");

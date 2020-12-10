@@ -9,6 +9,7 @@ import java.util.Observer;
 import static java.lang.Math.abs;
 
 public class Buoy implements Observer {
+    private final int VALIDATION_ZONE_WIDTH = 10;
     private final Vector _position;
     private final Vector _limit;
     private boolean _isValidated;
@@ -19,8 +20,8 @@ public class Buoy implements Observer {
         _isValidated = false;
     }
 
-    public boolean isValidated() {
-        return _isValidated;
+    public boolean isNotValidated() {
+        return !_isValidated;
     }
 
     public void setValidated( boolean bool ) {
@@ -32,22 +33,26 @@ public class Buoy implements Observer {
     }
 
     @Override
-    public void update( Observable o, Object arg ) {
-        Boat regatta = ((Boat) o);
-        Vector v = regatta.getPosition();
-        if (_position.y == _limit.y) {
-            if ((v.x > _position.x && v.x < _limit.x) || (v.x < _position.x && v.x > _limit.x)) {
-                if (abs(v.y - _position.y) < 10) {
-                    _isValidated = true;
-                }
-            }
-        } else {
-            if ((v.y > _position.y && v.y < _limit.y) || (v.y < _position.y && v.y > _limit.y)) {
-                if (abs(v.x - _position.x) < 10) {
-                    _isValidated = true;
-                }
-            }
+    public void update(Observable o, Object arg) {
+        Boat regatta = (Boat) o;
+        Vector regattaPosition = regatta.getPosition();
+
+        if (boatIsInTheVerticalValidationZone(regattaPosition)
+                || boatIsInTheHorizontalValidationZone(regattaPosition)) {
+            _isValidated = true;
         }
+    }
+
+    private boolean boatIsInTheHorizontalValidationZone(Vector regattaPosition) {
+        return (_position.x == _limit.x) && ((regattaPosition.y > _position.y && regattaPosition.y < _limit.y)
+                || (regattaPosition.y < _position.y && regattaPosition.y > _limit.y))
+                && (abs(regattaPosition.x - _position.x) < VALIDATION_ZONE_WIDTH);
+    }
+
+    private boolean boatIsInTheVerticalValidationZone(Vector regattaPosition) {
+        return (_position.y == _limit.y) && ((regattaPosition.x > _position.x && regattaPosition.x < _limit.x)
+                || (regattaPosition.x < _position.x && regattaPosition.x > _limit.x))
+                && (abs(regattaPosition.y - _position.y) < VALIDATION_ZONE_WIDTH);
     }
 }
 

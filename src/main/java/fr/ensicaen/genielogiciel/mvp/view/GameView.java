@@ -3,7 +3,6 @@ package fr.ensicaen.genielogiciel.mvp.view;
 import fr.ensicaen.genielogiciel.mvp.LoginMain;
 import fr.ensicaen.genielogiciel.mvp.presenter.GamePresenter;
 import fr.ensicaen.genielogiciel.mvp.presenter.LoginPresenter;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 
 public final class GameView {
     private GamePresenter _gamePresenter;
+
     private Stage _stage;
     @FXML
     private Canvas _canvas;
@@ -29,19 +30,25 @@ public final class GameView {
     private Label _windSpeed;
     @FXML
     private Label _windDirection;
+    @FXML
+    public Button _startButton;
+    @FXML
+    public Button _replayButton;
 
-    private static Parent _root;
     private boolean _hasStarted;
 
     public static GameView createView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("SpotMap.fxml"), LoginMain.getMessageBundle());
-        _root = fxmlLoader.load();
+        Parent _root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
+
         Scene scene = new Scene(_root, 800, 600);
         Stage stage = new Stage();
         stage.setTitle(ResourceBundle.getBundle("fr.ensicaen.genielogiciel.mvp.MessageBundle").getString("project.title"));
         stage.setScene(scene);
+        stage.getIcons().add(new Image(GameView.class.getResource("boat.png").toString()));
+
         view._stage = stage;
         _root.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.UP) {
@@ -83,9 +90,6 @@ public final class GameView {
 
     @FXML
     private void onKeyPressed(KeyCode code) {
-//        if (code == KeyCode.SPACE) {
-//            _gamePresenter.runGameLoop();
-//        }
         if (_hasStarted && !_gamePresenter.isReplay()) {
             if (code == KeyCode.D || code == KeyCode.RIGHT) {
                 _gamePresenter.boatRight();
@@ -97,22 +101,24 @@ public final class GameView {
     }
 
     @FXML
-    private void onClickStart(Event event) {
+    private void onClickStart() {
         _hasStarted = true;
         _gamePresenter.runGameLoop();
-        Button b = (Button)event.getSource();
-        b.setDisable(true);
+        _startButton.setDisable(true);
+        _replayButton.setDisable(true);
         _canvas.requestFocus();
     }
 
     @FXML
-    private void onClickMenu(Event event) throws IOException {
-        _gamePresenter.getTimeline().stop();
+    private void onClickMenu() throws IOException {
+        if (_gamePresenter.getTimeline() != null) {
+            _gamePresenter.getTimeline().stop();
+        }
 
         FXMLLoader loader = new FXMLLoader(LoginView.class.getResource("LoginDialog.fxml"), LoginMain.getMessageBundle());
         Parent root = loader.load();
         LoginView view = loader.getController();
-        Scene scene = new Scene(root); //, 400, 120);
+        Scene scene = new Scene(root);
 
         LoginView loginView = LoginView.createView(_stage);
         LoginPresenter presenter = new LoginPresenter();
@@ -123,8 +129,12 @@ public final class GameView {
     }
 
     @FXML
-    public void onClickReplay(Event event) {
+    public void onClickReplay() {
+        _replayButton.setDisable(true);
         _gamePresenter.replay();
     }
 
+    public void enableReplay() {
+        _replayButton.setDisable(false);
+    }
 }

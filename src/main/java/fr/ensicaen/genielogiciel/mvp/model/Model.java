@@ -19,17 +19,28 @@ public class Model {
 
     public Model() {
         _replayEnded = false;
-        _weather = new Weather();
-        try {
-            String json_data = WeatherLoader.loadWeatherInfo("49.283", "-0.25");
-            _weather.loadWindInfo(json_data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        loadWeather();
 
         _regalata = new Regalata(_weather.getWindDirection(),_weather.getWindSpeed());
         _regalataPosition = _regalata.getPosition();
 
+        createPath();
+    }
+
+    private void loadWeather() {
+        _weather = new Weather();
+        try {
+            String latitude = "49.283";
+            String longitude = "-0.25";
+            String json_data = WeatherLoader.loadWeatherInfo(latitude, longitude);
+            _weather.loadWindInfo(json_data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createPath() {
         _path = new Path();
         _path.loadPath();
         for (Buoy b : _path.getBuoys()) {
@@ -79,9 +90,8 @@ public class Model {
     }
 
     public boolean isGameFinished() {
-        boolean res = true;
         for (Buoy b : _path.getBuoys()) {
-            if (!b.isValidated()) {
+            if (b.isNotValidated()) {
                 return false;
             }
         }
