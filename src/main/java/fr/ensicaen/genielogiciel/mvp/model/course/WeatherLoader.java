@@ -7,12 +7,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class WeatherLoader {
-    public static String loadWeatherInfo(String url) throws IOException {
+    public static String loadWeatherInfo(String latitude, String longitude) throws IOException {
         BufferedReader in;
         String inputLine;
         StringBuilder content = new StringBuilder();
         int status;
-
+        String url = "https://www.prevision-meteo.ch/services/json/lat=" + latitude + "lng=" + longitude;
         URL request_url = new URL(url);
         HttpURLConnection con = (HttpURLConnection)request_url.openConnection();
         con.setRequestMethod("GET");

@@ -1,5 +1,6 @@
 package fr.ensicaen.genielogiciel.mvp.model.course;
 
+import fr.ensicaen.genielogiciel.mvp.model.boat.Cap;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -13,18 +14,18 @@ public class WeatherTest {
     private String _url = "https://www.prevision-meteo.ch/services/json/lat=" + _latitude + "lng=" + _longitude;
 
     @Test
-    public void load_weather_info() {
-        Weather weather = new Weather(_latitude, _longitude);
+    public void loadWeatherInfo() {
+        Weather weather = new Weather();
         String json_data;
         float wind_speed;
-        String wind_direction;
+        Cap wind_direction;
         try {
-            json_data = WeatherLoader.loadWeatherInfo(_url);
-            wind_speed = weather.get_wind_speed();
-            wind_direction = weather.get_wind_direction();
-            weather.load_wind_info(json_data);
-            assertNotEquals(null, wind_speed, weather.get_wind_speed());
-            assertNotEquals(null, wind_direction, weather.get_wind_direction());
+            json_data = WeatherLoader.loadWeatherInfo(_latitude, _longitude);
+            wind_speed = weather.getWindSpeed();
+            wind_direction = weather.getWindDirection();
+            weather.loadWindInfo(json_data);
+            assertNotEquals(null, wind_speed, weather.getWindSpeed());
+            assertNotEquals(null, wind_direction, weather.getWindDirection());
         } catch (IOException e) {
             e.printStackTrace();
         }

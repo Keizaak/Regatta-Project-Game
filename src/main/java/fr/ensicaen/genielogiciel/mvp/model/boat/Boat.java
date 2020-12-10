@@ -5,24 +5,6 @@ import fr.ensicaen.genielogiciel.mvp.model.Vector;
 import java.util.Observable;
 
 public abstract class Boat extends Observable {
-    /* TODO: remove string values (here for test purpose) */
-    public enum Cap {
-        EAST("EAST"),
-        WEST("WEST"),
-        NORTH("NORTH"),
-        SOUTH("SOUTH");
-
-        private String value;
-
-        Cap(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-    }
-
     private Vector _position;
     private Cap _direction;
     private float _orientation;
@@ -38,6 +20,12 @@ public abstract class Boat extends Observable {
         _windDirection = Cap.SOUTH;
         _windSpeed = 0.80f;
         _isFaster = false;
+    }
+
+    protected Boat(Cap cap, float speed) {
+        super();
+        _windDirection = cap;
+        _windSpeed = speed;
     }
 
     public Vector getPosition() {

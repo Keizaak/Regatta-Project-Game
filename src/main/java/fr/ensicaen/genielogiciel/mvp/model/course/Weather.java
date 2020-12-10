@@ -1,38 +1,55 @@
 package fr.ensicaen.genielogiciel.mvp.model.course;
 
+import fr.ensicaen.genielogiciel.mvp.model.boat.Cap;
 import org.json.JSONObject;
 
 public class Weather {
-    private float _wind_speed;
-    private String _wind_direction;
-    private String _latitude;
-    private String _longitude;
+    private float _windSpeed;
+    private Cap _windDirection;
+    private double _latitude;
+    private double _longitude;
 
-    public Weather(String latitude, String longitude) {
-        _latitude = latitude;
-        _longitude = longitude;
+    public Weather() {
+        _latitude = 0;
+        _longitude = 0;
     }
 
-    public void load_wind_info(String json) {
+    public void loadWindInfo(String json) {
         JSONObject jObject  = new JSONObject(json);
-        JSONObject data = jObject.getJSONObject("current_condition");
-        _wind_speed = data.getFloat("wnd_spd");
-        _wind_direction = data.getString("wnd_dir");
+        JSONObject city_info = jObject.getJSONObject("city_info");
+        JSONObject condition = jObject.getJSONObject("current_condition");
+        _latitude = city_info.getDouble("latitude");
+        _longitude = city_info.getDouble("longitude");
+        _windSpeed = condition.getFloat("wnd_spd");
+        switch(condition.getString("wnd_dir")) {
+            case "N":
+                _windDirection = Cap.NORTH;
+                break;
+            case "S":
+                _windDirection = Cap.SOUTH;
+                break;
+            case "E":
+                _windDirection = Cap.EAST;
+                break;
+            default:
+                _windDirection = Cap.WEST;
+                break;
+        }
     }
 
-    public float get_wind_speed() {
-        return _wind_speed;
+    public float getWindSpeed() {
+        return _windSpeed;
     }
 
 
-    public String get_wind_direction() {
-        return  _wind_direction;
+    public Cap getWindDirection() {
+        return _windDirection;
     }
 
     @Override
     public String toString() {
-        return "Weather{" + "_wind_speed=" + _wind_speed +
-                ", _wind_direction='" + _wind_direction + '\'' +
+        return "Weather{" + "_wind_speed=" + _windSpeed +
+                ", _wind_direction='" + _windDirection + '\'' +
                 ", _latitude='" + _latitude + '\'' +
                 ", _longitude='" + _longitude + '\'' +
                 '}';
