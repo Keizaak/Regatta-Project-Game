@@ -3,15 +3,28 @@ package fr.ensicaen.genielogiciel.mvp.model;
 import fr.ensicaen.genielogiciel.mvp.model.boat.Cap;
 import fr.ensicaen.genielogiciel.mvp.model.boat.Regalata;
 import fr.ensicaen.genielogiciel.mvp.model.course.Path;
+import fr.ensicaen.genielogiciel.mvp.model.course.Weather;
+import fr.ensicaen.genielogiciel.mvp.model.course.WeatherLoader;
+
+import java.io.IOException;
 
 public class Model {
     private Path _path;
     private Regalata _regalata;
     private String _nickname;
     private Vector _regalataPosition;
+    private Weather _weather;
 
     public Model() {
-        _regalata = new Regalata();
+        _weather = new Weather();
+        try {
+            String json_data = WeatherLoader.loadWeatherInfo("49.283", "-0.25");
+            _weather.loadWindInfo(json_data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        _regalata = new Regalata(_weather.getWindDirection(),_weather.getWindSpeed());
         _regalataPosition = _regalata.getPosition();
 
         _path = new Path();
@@ -40,16 +53,10 @@ public class Model {
 
     public void turnBoatLeft() {
         _regalata.changeOrientation(Cap.WEST);
-        Vector v = _regalata.getPosition();
-        _regalataPosition = v;
-        /* TODO: Do something with v ? */
     }
 
     public void turnBoatRight() {
         _regalata.changeOrientation(Cap.EAST);
-        Vector v = _regalata.getPosition();
-        _regalataPosition = v;
-        /* TODO: Do something with v ? */
     }
     
     public void movingForward() {
