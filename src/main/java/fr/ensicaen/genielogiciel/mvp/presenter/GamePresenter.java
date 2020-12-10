@@ -91,7 +91,4 @@ public final class GamePresenter {
         _commandRegister.addCommand(c);
     }
 
-
-
-
 }

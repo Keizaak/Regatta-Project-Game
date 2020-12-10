@@ -59,8 +59,8 @@
                   <Label text="%env.info" />
                   <Label text="%env.direction" GridPane.rowIndex="2" />
                   <Label text="%env.speed" GridPane.rowIndex="1" />
-                  <Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="null" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label id="windSpeed" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label id="windDirection" text="null" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

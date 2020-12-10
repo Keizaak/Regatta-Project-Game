@@ -7,20 +7,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class WeatherLoader {
-    private String _url;
-
-    public WeatherLoader(String url) {
-        _url = url;
-    }
-
-    public String load_weather_info() throws IOException {
+    public static String loadWeatherInfo(String latitude, String longitude) throws IOException {
         BufferedReader in;
         String inputLine;
         StringBuilder content = new StringBuilder();
         int status;
-
-        URL url = new URL(_url);
-        HttpURLConnection con = (HttpURLConnection)url.openConnection();
+        String url = "https://www.prevision-meteo.ch/services/json/lat=" + latitude + "lng=" + longitude;
+        URL request_url = new URL(url);
+        HttpURLConnection con = (HttpURLConnection)request_url.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("Content-Type", "application/json; utf-8");
         con.setRequestProperty("Accept", "application/json");
@@ -29,7 +23,7 @@ public class WeatherLoader {
         con.setReadTimeout(5000);
 
         status = con.getResponseCode();
-        if(status == 200) {
+        if(successfulRequest(status)) {
             in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             while ((inputLine = in.readLine()) != null) {
                 content.append(inputLine);
@@ -38,5 +32,9 @@ public class WeatherLoader {
         }
         con.disconnect();
         return content.toString();
+    }
+
+    private static boolean successfulRequest(int status) {
+        return status == 200;
     }
 }

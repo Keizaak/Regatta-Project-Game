@@ -1,6 +1,6 @@
 package fr.ensicaen.genielogiciel.mvp.model;
 
-import fr.ensicaen.genielogiciel.mvp.model.boat.Boat;
+import fr.ensicaen.genielogiciel.mvp.model.boat.Cap;
 import fr.ensicaen.genielogiciel.mvp.model.boat.Regalata;
 import fr.ensicaen.genielogiciel.mvp.model.course.Course;
 
@@ -38,14 +38,14 @@ public class Model {
     }
 
     public void turnBoatLeft() {
-        _regalata.changeOrientation(Boat.Cap.WEST);
+        _regalata.changeOrientation(Cap.WEST);
         Vector v = _regalata.getPosition();
         _regalataPosition = v;
         /* TODO: Do something with v ? */
     }
 
     public void turnBoatRight() {
-        _regalata.changeOrientation(Boat.Cap.EAST);
+        _regalata.changeOrientation(Cap.EAST);
         Vector v = _regalata.getPosition();
         _regalataPosition = v;
         /* TODO: Do something with v ? */
