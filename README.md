@@ -13,101 +13,10 @@ continue et de développement agile.
 
 Le projet est géré par le moteur de production 'gradle'.
 
-## Organisation du projet
- 
-Le projet a la structure suivante :
+## Description du jeu
 
-    .
-    │
-    ├── build.gradle, settings.gradle, gradle.properties ...
-    │
-    ├── .gitlab-ci.yml
-    │
-    ├── gradle
-    │
-    ├── files
-    │       ├── Architexture.txt
-    │       ├── Rapport-Groupe-TP1.pdf
-    │       ├── UML-Projet.png
-    │       
-    └── src
-        ├── main
-        │   ├── main.iml
-        │   │ 
-        │   ├── java
-        │   │      ├── fr.ensicaen.genielogiciel.mvp
-        │   │          ├──LoginMain.java        
-        │   │          ├──model
-        │   │          │    ├──Model.java   
-        │   │          │    ├──boat    
-        │   │          │    │    ├──Boat.java   
-        │   │          │    │    ├──BoatDecorator.java   
-        │   │          │    │    ├──Regalata.java   
-        │   │          │    │    ├──Vector.java   
-        │   │          │    │    │       
-        │   │          │    │    ├──crew    
-        │   │          │    │    │     ├──Crew.java    
-        │   │          │    │    │     ├──FourMembersCrew.java 
-        │   │          │    │    │     ├──TwoMembersCrew.java
-        │   │          │    │    │            
-        │   │          │    │    ├──sail  
-        │   │          │    │         ├──LargeSail.java          
-        │   │          │    │         ├──MeidumSail.java  
-        │   │          │    │         ├──Sail.java  
-        │   │          │    │        
-        │   │          │    ├──course    
-        │   │          │         ├──Buoy.java   
-        │   │          │         ├──Course.java   
-        │   │          │         ├──Path.java
-        │   │          │         ├──Weather.java   
-        │   │          │    
-        │   │          ├──presenter
-        │   │          │    ├──GamePresenter.java 
-        │   │          │    ├──LoginPresenter.java 
-        │   │          │    │  
-        │   │          │    ├──command  
-        │   │          │         ├──CmdLeft.java  
-        │   │          │         ├──CmdRight.java  
-        │   │          │         ├──Command.java 
-        │   │          │         ├──CommandRegister.java 
-        │   │          │         ├──FileReader.java 
-        │   │          │         ├──FileWriter.java 
-        │   │          │        
-        │   │          ├──view
-        │   │               ├──GameView.java 
-        │   │               ├──LoginView.java 
-        │   │ 
-        │   ├── ressources
-        │          ├── fr.ensicaen.genielogiciel.mvp
-        │              ├──MessageBundle.properties   
-        │              ├──MessageBundle_en_US.properties  
-        │              │        
-        │              ├──view   
-        │                   ├──boat.png   
-        │                   ├──LoginDialog.css         
-        │                   ├──Logindialog.fxml         
-        │                   ├──sand.jpg         
-        │                   ├──SpotMap.css         
-        │                   ├──SpotMap.fxml               
-        ├── test
-            ├── test.iml      
-            │ 
-            ├── java
-                   ├── fr.ensicaen.genielogiciel.mvp
-                       ├──model
-                       │    ├──ModelTest.java    
-                       │    ├──boat    
-                       │    │    ├──RegalataTest.java
-                       │    │        
-                       │    ├──course    
-                       │         ├──CourseTest.java
-                       │         ├──WeatherTest.java
-                       │    
-                       ├──presenter
-                       │    ├──LoginPresenterTest.java
-                       │        
-                       ├──view
-                            ├──GameView.java 
-                            ├──LoginView.java 
-         
+Le jeu consiste en une course de Régate, le but est d'effectuer le tour des bouées en prenant le moins
+de temps possible, le temps étant donné à la fin du parcours sous forme d'un score.
 
+Les conditions météorologiques actuelles sont intégrées au jeu, ainsi l'intensité et l'orientation 
+du vent impactent le bateau, à vous d'en tirer profit pour aller le plus vite possible !
