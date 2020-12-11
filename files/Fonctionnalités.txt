@@ -1,4 +1,3 @@
-
 Fonctionnalités -> tâches
 ---------------
 
@@ -25,6 +24,7 @@ MVP 1
 
 4. Changer de cap
 9. Tableau de bord : cap, vitesse de déplacement, force et direction du vent
+3. Vitesse et direction du vent d'après les conditions météorologiques réelles (reportée)
 16. GUI : déplacer le bateau dynamiquement (contrôleur)
 17. GUI : concevoir le GUI
 
@@ -34,15 +34,16 @@ MVP 2
 1. Calcul du score basé sur le temps de parcours
 2. Initialisation du jeu par fichier de configuration du plan d'eau et de parcours (prédéfini)
 3. Vitesse et direction du vent d'après les conditions météorologiques réelles
-6. Choisir la taille (surface) des voiles : grande ou moyenne
-7. Choisir la taille de l'équipe : 2 ou 4
+6. Choisir la taille (surface) des voiles : grande ou moyenne (abandonnée)
+7. Choisir la taille de l'équipe : 2 ou 4 (abandonnée)
 10. Sauvegarde d'une partie pour un bateau seul
 11. Rejouer automatiquement une partie
-12. Neutralité du bateau : point de contact avec boué ou trait de côte. 
-8. Influence des voiles et de l'équipe sur le temps de virement et la vitesse
+12. Neutralité du bateau : point de contact avec boué ou trait de côte (abandonnée)
+8. Influence des voiles et de l'équipe sur le temps de virement et la vitesse (abandonnée)
+18. Validation des bouées grâce à un signal visuel
 
 
-MVP 3 (ne seront pas implémentées, à mettre à jour à la place du MVP 1)
+MVP 3 (ne seront pas implémentées)
 _____
 
 
